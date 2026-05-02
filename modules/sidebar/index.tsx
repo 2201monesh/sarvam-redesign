@@ -3,20 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import {
-  House,
-  Cpu,
-  FlaskConical,
-  KeyRound,
-  PanelLeft,
-  ChevronDown,
-} from "lucide-react";
-
-const devItems = [
-  { label: "Models", href: "/models", icon: Cpu },
-  { label: "Playground", href: "/playground", icon: FlaskConical },
-  { label: "API Keys", href: "/api-keys", icon: KeyRound },
-];
+import { PanelLeft, ChevronDown } from "lucide-react";
+import { SIDEBAR_OPTION_CONTENT, HOME_OPTION, DEV_OPTIONS } from "./constants";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -24,6 +12,8 @@ export default function Sidebar() {
   const [devOpen, setDevOpen] = useState(true);
 
   const isActive = (href: string) => pathname === href;
+
+  const homeItem = SIDEBAR_OPTION_CONTENT[HOME_OPTION];
 
   return (
     <aside
@@ -56,30 +46,29 @@ export default function Sidebar() {
 
         {/* Home — standalone */}
         <Link
-          href="/home"
-          title={collapsed ? "Home" : undefined}
+          href={homeItem.href}
+          title={collapsed ? homeItem.label : undefined}
           className={`group mb-1 flex items-center rounded-3xl px-3 py-2.5 text-sm transition-colors duration-100 ${
             collapsed ? "justify-center" : "gap-3.5"
           } ${
-            isActive("/home")
+            isActive(homeItem.href)
               ? "bg-[#f0f0f0] font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
               : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
           }`}
         >
-          <House
+          <homeItem.icon
             size={16}
             className={`shrink-0 transition-transform duration-200 ease-out group-hover:scale-110 ${
-              isActive("/home")
+              isActive(homeItem.href)
                 ? "text-zinc-900 dark:text-zinc-100"
                 : "text-zinc-400 dark:text-zinc-500"
             }`}
           />
-          {!collapsed && <span>Home</span>}
+          {!collapsed && <span>{homeItem.label}</span>}
         </Link>
 
         {/* Developers section */}
         <div className="mt-3">
-          {/* Section heading — toggle button */}
           {collapsed ? (
             <div className="mb-1 flex justify-center px-3 py-1">
               <div className="h-px w-6 bg-zinc-200 dark:bg-zinc-700" />
@@ -97,36 +86,38 @@ export default function Sidebar() {
             </button>
           )}
 
-          {/* Collapsible items */}
           <div
             className={`flex flex-col overflow-hidden transition-all duration-200 ease-in-out ${
               !collapsed && !devOpen ? "max-h-0" : "max-h-96"
             }`}
           >
-            {devItems.map(({ label, href, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                title={collapsed ? label : undefined}
-                className={`group flex items-center rounded-3xl px-3 py-2.5 text-sm transition-colors duration-100 mb-1 ${
-                  collapsed ? "justify-center" : "gap-3.5"
-                } ${
-                  isActive(href)
-                    ? "bg-[#f0f0f0] font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-                    : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
-                }`}
-              >
-                <Icon
-                  size={16}
-                  className={`shrink-0 transition-transform duration-200 ease-out group-hover:scale-110 ${
-                    isActive(href)
-                      ? "text-zinc-900 dark:text-zinc-100"
-                      : "text-zinc-400 dark:text-zinc-500"
+            {DEV_OPTIONS.map((option) => {
+              const item = SIDEBAR_OPTION_CONTENT[option];
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  title={collapsed ? item.label : undefined}
+                  className={`group mb-1 flex items-center rounded-3xl px-3 py-2.5 text-sm transition-colors duration-100 ${
+                    collapsed ? "justify-center" : "gap-3.5"
+                  } ${
+                    isActive(item.href)
+                      ? "bg-[#f0f0f0] font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+                      : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
                   }`}
-                />
-                {!collapsed && <span>{label}</span>}
-              </Link>
-            ))}
+                >
+                  <item.icon
+                    size={16}
+                    className={`shrink-0 transition-transform duration-200 ease-out group-hover:scale-110 ${
+                      isActive(item.href)
+                        ? "text-zinc-900 dark:text-zinc-100"
+                        : "text-zinc-400 dark:text-zinc-500"
+                    }`}
+                  />
+                  {!collapsed && <span>{item.label}</span>}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </nav>
