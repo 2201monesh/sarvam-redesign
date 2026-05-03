@@ -1,4 +1,4 @@
-import { House, Cpu, FlaskConical, KeyRound } from "lucide-react";
+import { House, Cpu, BarChart2, KeyRound } from "lucide-react";
 import { SIDEBAR_OPTION } from "./interfaces";
 import type { SidebarItemConfig } from "./interfaces";
 
@@ -13,10 +13,10 @@ export const SIDEBAR_OPTION_CONTENT: Record<SIDEBAR_OPTION, SidebarItemConfig> =
     href: "/models",
     icon: Cpu,
   },
-  [SIDEBAR_OPTION.PLAYGROUND]: {
-    label: "Playground",
-    href: "/playground",
-    icon: FlaskConical,
+  [SIDEBAR_OPTION.USAGE]: {
+    label: "Usage",
+    href: "/usage",
+    icon: BarChart2,
   },
   [SIDEBAR_OPTION.API_KEYS]: {
     label: "API Keys",
@@ -29,6 +29,6 @@ export const HOME_OPTION = SIDEBAR_OPTION.HOME;
 
 export const DEV_OPTIONS: SIDEBAR_OPTION[] = [
   SIDEBAR_OPTION.MODELS,
-  SIDEBAR_OPTION.PLAYGROUND,
+  SIDEBAR_OPTION.USAGE,
   SIDEBAR_OPTION.API_KEYS,
 ];

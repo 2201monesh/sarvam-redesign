@@ -3,7 +3,7 @@ import type { LucideIcon } from "lucide-react";
 export enum SIDEBAR_OPTION {
   HOME = "HOME",
   MODELS = "MODELS",
-  PLAYGROUND = "PLAYGROUND",
+  USAGE = "USAGE",
   API_KEYS = "API_KEYS",
 }
 
