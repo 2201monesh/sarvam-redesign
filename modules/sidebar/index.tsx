@@ -41,10 +41,8 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Nav */}
       <nav className="mt-2 flex flex-1 flex-col px-2">
 
-        {/* Home — standalone */}
         <Link
           href={homeItem.href}
           title={collapsed ? homeItem.label : undefined}
@@ -67,7 +65,6 @@ export default function Sidebar() {
           {!collapsed && <span>{homeItem.label}</span>}
         </Link>
 
-        {/* Developers section */}
         <div className="mt-3">
           {collapsed ? (
             <div className="mb-1 flex justify-center px-3 py-1">
