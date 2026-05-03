@@ -14,12 +14,12 @@ export default function HomePage() {
       <div className="px-6 py-6 flex flex-col gap-10">
         <ApiKeyBanner />
         <UsageSection />
+        <FeaturesGrid />
         <div className="w-full flex items-stretch">
           <VoicesList />
           <ConversationCard />
         </div>
         <FeatureCTA />
-        <FeaturesGrid />
         <SetupSection />
       </div>
     </div>
