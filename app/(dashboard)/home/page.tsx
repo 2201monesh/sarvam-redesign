@@ -3,6 +3,7 @@ import VoicesList from "@/modules/home/VoicesList";
 import ConversationCard from "@/modules/home/ConversationCard";
 import FeatureCTA from "@/modules/home/FeatureCTA";
 import FeaturesGrid from "@/modules/home/FeaturesGrid";
+import UsageChart from "@/modules/home/UsageChart";
 
 export default function HomePage() {
   return (
@@ -34,6 +35,10 @@ export default function HomePage() {
             <span className="relative z-10">Manage API Keys</span>
           </button>
         </div>
+      </div>
+      <div className="w-full px-6 pb-10 usage-chart-section">
+        <p className="font-season-mix capitalize font-medium text-3xl pb-6">Usage</p>
+        <div className="w-full border border-neutral-200 rounded-xl px-4 pt-4 pb-2"><UsageChart /></div>
       </div>
     </div>
   );
