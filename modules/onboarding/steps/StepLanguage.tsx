@@ -25,8 +25,8 @@ export default function StepLanguage({ state, onChange, onNext, onBack }: StepPr
               onClick={() => toggle(lang)}
               className={`rounded-full border px-4 py-2 text-sm transition-colors duration-100 cursor-pointer ${
                 selected
-                  ? "border-zinc-900 bg-zinc-900 text-white"
-                  : "border-neutral-200 text-neutral-600 hover:border-neutral-400 hover:text-zinc-800"
+                  ? "border-transparent bg-zinc-50 text-zinc-900 outline outline-2 outline-zinc-900 outline-offset-1"
+                  : "border-neutral-200 text-neutral-600 hover:border-neutral-300 hover:text-zinc-800"
               }`}
             >
               {lang}
