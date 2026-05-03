@@ -28,8 +28,8 @@ export default function Sidebar() {
         }`}
       >
         {!collapsed && (
-          <span className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-            Sarvam
+          <span className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
+            sarvam
           </span>
         )}
         <button
