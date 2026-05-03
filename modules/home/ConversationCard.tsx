@@ -10,8 +10,8 @@ const descriptions = [
 
 export default function ConversationCard() {
   return (
-    <div className="w-[50%] h-full flex items-center justify-center pr-6">
-      <div className="w-full h-[90%] border border-neutral-200 rounded-2xl flex">
+    <div className="w-[50%] flex items-center justify-center pr-6">
+      <div className="w-full h-64 border border-neutral-200 rounded-2xl flex">
 
         {/* Left — play button + label */}
         <div className="w-[35%] h-full pl-5 py-5 flex flex-col justify-between">
