@@ -24,3 +24,34 @@ body {
   color: var(--foreground);
   font-family: var(--font-matter), sans-serif;
 }
+
+@keyframes waveBar {
+  0%   { transform: scaleY(0.2); opacity: 0.35; }
+  100% { transform: scaleY(1);   opacity: 0.85; }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0;    }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes tokenPulse {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.75; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes fadeAlt {
+  0%, 40%  { opacity: 0.9; }
+  55%, 95% { opacity: 0.15; }
+  100%     { opacity: 0.9; }
+}
