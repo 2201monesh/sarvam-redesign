@@ -11,15 +11,17 @@ export default function HomePage() {
   return (
     <div className="flex-1 w-full">
       <HomeHeader />
-      <ApiKeyBanner />
-      <div className="w-full flex items-stretch pt-4 pb-10">
-        <VoicesList />
-        <ConversationCard />
+      <div className="px-6 py-6 flex flex-col gap-10">
+        <ApiKeyBanner />
+        <UsageSection />
+        <div className="w-full flex items-stretch">
+          <VoicesList />
+          <ConversationCard />
+        </div>
+        <FeatureCTA />
+        <FeaturesGrid />
+        <SetupSection />
       </div>
-      <FeatureCTA />
-      <FeaturesGrid />
-      <UsageSection />
-      <SetupSection />
     </div>
   );
 }

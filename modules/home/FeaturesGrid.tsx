@@ -15,9 +15,9 @@ export default function FeaturesGrid() {
   const chatRef = useRef<MessageSquareIconHandle>(null);
 
   return (
-    <div className="w-full px-6 pb-10">
-      <div className="flex items-center justify-between pt-6">
-        <p className="capitalize font-medium text-3xl font-season-mix mr-6">Get connected with all the sarvam features</p>
+    <div className="w-full">
+      <div className="flex items-center justify-between">
+        <p className="capitalize font-medium text-3xl font-season-mix mr-6">Explore Sarvam features</p>
         <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
           Start building
           <ChevronRight size={14} />

@@ -3,8 +3,7 @@ import Link from "next/link";
 
 export default function ApiKeyBanner() {
   return (
-    <div className="w-full px-6 pt-6 pb-6">
-      <div className="w-full border border-neutral-200 rounded-xl flex items-center justify-between gap-6 pr-5 pl-2 py-4">
+    <div className="w-full border border-neutral-200 rounded-xl flex items-center justify-between gap-6 pr-5 pl-2 py-4">
         <div className="flex items-center gap-3 min-w-0">
           <div className="shrink-0">
             <Image
@@ -37,7 +36,6 @@ export default function ApiKeyBanner() {
             <span className="relative z-10">Manage API Keys</span>
           </button>
         </Link>
-      </div>
     </div>
   );
 }
