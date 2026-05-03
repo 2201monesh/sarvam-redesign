@@ -1,6 +1,7 @@
 import GlowButton from "@/components/GlowButton";
 import { USE_CASES } from "@/modules/onboarding/constants";
 import { StepProps } from "@/modules/onboarding/types";
+import { playSelectClick } from "@/lib/sounds";
 
 export default function StepUseCase({ state, onChange, onNext, onBack }: StepProps) {
   return (
@@ -12,7 +13,7 @@ export default function StepUseCase({ state, onChange, onNext, onBack }: StepPro
         {USE_CASES.map((u) => (
           <button
             key={u.id}
-            onClick={() => onChange({ useCase: u.id })}
+            onClick={() => { playSelectClick(); onChange({ useCase: u.id }); }}
             className={`rounded-xl border px-5 py-4 text-left text-sm font-medium transition-colors duration-100 cursor-pointer ${
               state.useCase === u.id
                 ? "border-zinc-900 bg-zinc-50 text-zinc-900"

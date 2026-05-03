@@ -1,7 +1,10 @@
 export interface OnboardingState {
-  role:      string;
-  useCase:   string;
-  languages: string[];
+  name:              string;
+  heardFrom:         string;
+  preferredLanguage: string;
+  role:              string;
+  useCase:           string;
+  languages:         string[];
 }
 
 export interface StepProps {

@@ -3,26 +3,29 @@
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { TOTAL_STEPS } from "@/modules/onboarding/constants";
-import { markOnboardingComplete } from "@/modules/onboarding/hooks/useOnboardingStorage";
+import { markOnboardingComplete, saveUserName } from "@/modules/onboarding/hooks/useOnboardingStorage";
 import { OnboardingState } from "@/modules/onboarding/types";
-import SplashScreen from "@/modules/onboarding/SplashScreen";
-import StepWelcome  from "@/modules/onboarding/steps/StepWelcome";
-import StepRole     from "@/modules/onboarding/steps/StepRole";
-import StepUseCase  from "@/modules/onboarding/steps/StepUseCase";
-import StepLanguage from "@/modules/onboarding/steps/StepLanguage";
-import StepComplete from "@/modules/onboarding/steps/StepComplete";
+import SplashScreen    from "@/modules/onboarding/SplashScreen";
+import StepWelcome     from "@/modules/onboarding/steps/StepWelcome";
+import StepPersonalize from "@/modules/onboarding/steps/StepPersonalize";
+import StepRole        from "@/modules/onboarding/steps/StepRole";
+import StepUseCase     from "@/modules/onboarding/steps/StepUseCase";
+import StepLanguage    from "@/modules/onboarding/steps/StepLanguage";
+import StepComplete    from "@/modules/onboarding/steps/StepComplete";
 
-const STEP_WELCOME  = 0;
-const STEP_ROLE     = 1;
-const STEP_USECASE  = 2;
-const STEP_LANGUAGE = 3;
-const STEP_COMPLETE = 4;
+const STEP_WELCOME     = 0;
+const STEP_PERSONALIZE = 1;
+const STEP_ROLE        = 2;
+const STEP_USECASE     = 3;
+const STEP_LANGUAGE    = 4;
+const STEP_COMPLETE    = 5;
 
 export default function OnboardingFlow() {
   const router = useRouter();
   const [showSplash, setShowSplash] = useState(true);
   const [step, setStep] = useState(STEP_WELCOME);
   const [state, setState] = useState<OnboardingState>({
+    name: "", heardFrom: "", preferredLanguage: "",
     role: "", useCase: "", languages: [],
   });
 
@@ -32,6 +35,7 @@ export default function OnboardingFlow() {
 
   const onNext = useCallback(() => {
     if (step === STEP_COMPLETE) {
+      saveUserName(state.name);
       markOnboardingComplete();
       router.push("/home");
       return;
@@ -72,11 +76,12 @@ export default function OnboardingFlow() {
 
         {/* Step content */}
         <div className="w-full max-w-lg">
-          {step === STEP_WELCOME  && <StepWelcome  {...stepProps} />}
-          {step === STEP_ROLE     && <StepRole     {...stepProps} />}
-          {step === STEP_USECASE  && <StepUseCase  {...stepProps} />}
-          {step === STEP_LANGUAGE && <StepLanguage {...stepProps} />}
-          {step === STEP_COMPLETE && <StepComplete {...stepProps} />}
+          {step === STEP_WELCOME     && <StepWelcome     {...stepProps} />}
+          {step === STEP_PERSONALIZE && <StepPersonalize {...stepProps} />}
+          {step === STEP_ROLE        && <StepRole        {...stepProps} />}
+          {step === STEP_USECASE     && <StepUseCase     {...stepProps} />}
+          {step === STEP_LANGUAGE    && <StepLanguage    {...stepProps} />}
+          {step === STEP_COMPLETE    && <StepComplete    {...stepProps} />}
         </div>
       </div>
     </>
