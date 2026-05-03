@@ -12,10 +12,10 @@ export default function FeaturesGrid() {
         </button>
       </div>
       <div className="w-full pt-6 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        <FeatureCard title="Text to Speech" icon={Volume2} />
-        <FeatureCard title="Speech to Text" icon={Mic} />
-        <FeatureCard title="Translate" icon={Languages} />
-        <FeatureCard title="Chat" icon={MessageSquare} />
+        <FeatureCard title="Text to Speech" icon={Volume2} gradientColor="#c3cff3" />
+        <FeatureCard title="Speech to Text" icon={Mic} gradientColor="#fbd6c6" />
+        <FeatureCard title="Translate" icon={Languages} gradientColor="#c3cff3" />
+        <FeatureCard title="Chat" icon={MessageSquare} gradientColor="#fbd6c6" />
       </div>
     </div>
   );
