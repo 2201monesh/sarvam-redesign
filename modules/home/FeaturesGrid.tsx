@@ -7,7 +7,7 @@ export default function FeaturesGrid() {
       <div className="flex items-center pt-6">
         <p className="capitalize font-medium text-3xl font-season-mix mr-6">Get connected with all the sarvam features</p>
         <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
-          Show more
+          Start building
           <ChevronRight size={14} />
         </button>
       </div>

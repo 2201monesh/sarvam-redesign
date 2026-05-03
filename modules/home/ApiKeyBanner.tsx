@@ -1,4 +1,5 @@
 import GlowButton from "@/components/GlowButton";
+import Link from "next/link";
 
 export default function ApiKeyBanner() {
   return (
@@ -14,6 +15,7 @@ export default function ApiKeyBanner() {
           </div>
         </div>
         {/* <GlowButton label="Manage API Keys" /> */}
+        <Link href="/api-keys">
         <button
           className={`relative overflow-hidden bg-black text-white rounded-full px-5 text-sm py-3 font-season-mix cursor-pointer focus:outline-none outline-none border-none disabled:opacity-40 disabled:cursor-not-allowed`}
           style={{
@@ -27,6 +29,7 @@ export default function ApiKeyBanner() {
       />
       <span className="relative z-10">Manage API Keys</span>
     </button>
+    </Link>
       </div>
     </div>
   );
