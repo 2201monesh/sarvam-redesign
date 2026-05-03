@@ -10,8 +10,8 @@ export default function SplashScreen({ onDone }: SplashScreenProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const fadeOut = setTimeout(() => setVisible(false), 3000);
-    const done    = setTimeout(onDone, 3600);
+    const fadeOut = setTimeout(() => setVisible(false), 800);
+    const done    = setTimeout(onDone, 1100);
     return () => { clearTimeout(fadeOut); clearTimeout(done); };
   }, [onDone]);
 

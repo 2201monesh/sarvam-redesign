@@ -11,13 +11,13 @@ export default function HomePage() {
   return (
     <div className="flex-1 w-full">
       <HomeHeader />
-      <div className="w-full flex items-stretch py-10">
+      <ApiKeyBanner />
+      <div className="w-full flex items-stretch pt-4 pb-10">
         <VoicesList />
         <ConversationCard />
       </div>
       <FeatureCTA />
       <FeaturesGrid />
-      <ApiKeyBanner />
       <UsageSection />
       <SetupSection />
     </div>

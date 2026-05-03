@@ -1,24 +1,41 @@
 interface FeatureCardProps {
   title: string;
+  modelName: string;
+  description: string;
   iconElement: React.ReactNode;
-  gradientColor: string;
+  imageUrl: string;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
 
-const FeatureCard = ({ title, iconElement, gradientColor, onMouseEnter, onMouseLeave }: FeatureCardProps) => {
+const FeatureCard = ({ title, modelName, description, iconElement, imageUrl, onMouseEnter, onMouseLeave }: FeatureCardProps) => {
   return (
     <div
-      className="relative flex-1 h-36 border border-neutral-200 rounded-xl flex flex-col px-6 justify-end py-4 overflow-hidden bg-white cursor-pointer"
+      className="flex-1 flex flex-col min-w-[200px] cursor-pointer"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {/* Visual card */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: `linear-gradient(to bottom left, ${gradientColor} 0%, transparent 55%)` }}
-      />
-      <div className="text-neutral-500 mb-2 relative z-10">{iconElement}</div>
-      <p className="text-base font-medium text-neutral-800 relative z-10">{title}</p>
+        className="w-full h-36 rounded-xl flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url(${imageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="relative flex items-center gap-4">
+          <div className="text-white">{iconElement}</div>
+          <div className="w-px h-7 bg-white/30 shrink-0" />
+          <p className="text-base font-medium text-white tracking-wide">{title}</p>
+        </div>
+      </div>
+
+      {/* Text below */}
+      <div className="mt-3 px-0.5">
+        <p className="text font-medium text-zinc-900">{modelName}</p>
+        <p className="text-xs text-neutral-500 mt-1 leading-relaxed">{description}</p>
+      </div>
     </div>
   );
 };

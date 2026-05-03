@@ -50,9 +50,9 @@ export default function SetupSection() {
 
   return (
     <div className="w-full px-6 pb-10">
-      <div className="flex items-center pb-6">
+      <div className="flex items-center justify-between pb-6">
         <p className="font-season-mix capitalize font-medium text-3xl mr-6">Learn how to setup?</p>
-        <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
+        <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
           Read documentation
           <ChevronRight size={14} />
         </button>

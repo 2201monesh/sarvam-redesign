@@ -16,39 +16,47 @@ export default function FeaturesGrid() {
 
   return (
     <div className="w-full px-6 pb-10">
-      <div className="flex items-center pt-6">
+      <div className="flex items-center justify-between pt-6">
         <p className="capitalize font-medium text-3xl font-season-mix mr-6">Get connected with all the sarvam features</p>
-        <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
+        <button className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-neutral-500 bg-neutral-100 hover:text-neutral-800 transition-colors duration-100 cursor-pointer">
           Start building
           <ChevronRight size={14} />
         </button>
       </div>
-      <div className="w-full pt-6 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="w-full pt-6 flex gap-5 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <FeatureCard
           title="Text to Speech"
-          gradientColor="#c3cff3"
-          iconElement={<Volume2Icon ref={ttsRef} size={20} />}
+          modelName="Bulbul"
+          description="Convert text into natural, expressive speech across 10+ Indian languages with customisable voice and tone."
+          imageUrl="https://images.unsplash.com/photo-1503455637927-730bce8583c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          iconElement={<Volume2Icon ref={ttsRef} size={24} />}
           onMouseEnter={() => ttsRef.current?.startAnimation()}
           onMouseLeave={() => ttsRef.current?.stopAnimation()}
         />
         <FeatureCard
           title="Speech to Text"
-          gradientColor="#fbd6c6"
-          iconElement={<MicIcon ref={sttRef} size={20} />}
+          modelName="Saaras"
+          description="Transcribe live or recorded audio with high accuracy across diverse accents and Indian languages."
+          imageUrl="https://images.unsplash.com/photo-1507608158173-1dcec673a2e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          iconElement={<MicIcon ref={sttRef} size={24} />}
           onMouseEnter={() => sttRef.current?.startAnimation()}
           onMouseLeave={() => sttRef.current?.stopAnimation()}
         />
         <FeatureCard
           title="Translate"
-          gradientColor="#c3cff3"
-          iconElement={<LanguagesIcon ref={transRef} size={20} />}
+          modelName="Mayura"
+          description="Translate between English and 22 Indian languages with high fidelity, optimised for structured long text."
+          imageUrl="https://plus.unsplash.com/premium_photo-1669392157886-f4e298c8ec6b?q=80&w=1122&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          iconElement={<LanguagesIcon ref={transRef} size={24} />}
           onMouseEnter={() => transRef.current?.startAnimation()}
           onMouseLeave={() => transRef.current?.stopAnimation()}
         />
         <FeatureCard
           title="Chat"
-          gradientColor="#fbd6c6"
-          iconElement={<MessageSquareIcon ref={chatRef} size={20} />}
+          modelName="Sarvam-2B"
+          description="Build multilingual conversational experiences with Sarvam's Indic-optimised chat and agent APIs."
+          imageUrl="https://plus.unsplash.com/premium_photo-1675874973165-2c875c9ed382?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDY1fHx8ZW58MHx8fHx8"
+          iconElement={<MessageSquareIcon ref={chatRef} size={24} />}
           onMouseEnter={() => chatRef.current?.startAnimation()}
           onMouseLeave={() => chatRef.current?.stopAnimation()}
         />
