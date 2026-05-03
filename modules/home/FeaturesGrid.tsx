@@ -23,7 +23,7 @@ export default function FeaturesGrid() {
           <ChevronRight size={14} />
         </button>
       </div>
-      <div className="w-full pt-6 flex gap-5 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="w-full pt-6 grid grid-cols-2 gap-5">
         <FeatureCard
           title="Text to Speech"
           modelName="Bulbul"

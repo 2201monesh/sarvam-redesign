@@ -11,13 +11,13 @@ interface FeatureCardProps {
 const FeatureCard = ({ title, modelName, description, iconElement, imageUrl, onMouseEnter, onMouseLeave }: FeatureCardProps) => {
   return (
     <div
-      className="flex-1 flex flex-col min-w-[200px] cursor-pointer"
+      className="flex flex-col cursor-pointer"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       {/* Visual card */}
       <div
-        className="w-full h-36 rounded-xl flex items-center justify-center overflow-hidden"
+        className="w-full h-32 rounded-xl flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url(${imageUrl})`,
           backgroundSize: "cover",
