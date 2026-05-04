@@ -9,26 +9,31 @@ const setupItems = [
     title: "Text Processing Overview",
     description:
       "Sarvam Translate enables high quality translation between English and 22 scheduled Indian languages, optimised for structured, long text.",
+    color: "#e0e9fc",
   },
   {
     title: "Getting Started with TTS",
     description:
       "Convert any text into natural-sounding speech in seconds. Configure voice, pitch, and pace to match your product's tone and audience.",
+    color: "#fde7dd",
   },
   {
     title: "Speech Recognition Setup",
     description:
       "Integrate Saaras into your app to transcribe audio in real time. Supports 10+ Indian languages with high accuracy across accents.",
+    color: "#d9ecc8",
   },
   {
     title: "Voice Agent Quickstart",
     description:
       "Build end-to-end voice bots that understand and respond naturally. Connect your backend with Sarvam's agent APIs in minutes.",
+    color: "#ffeec7",
   },
   {
     title: "API Key & Authentication",
     description:
       "Generate and manage API keys from your dashboard. Secure every request with token-based auth and monitor usage per key.",
+    color: "#f2e6e2",
   },
 ];
 
@@ -79,7 +84,7 @@ export default function SetupSection() {
           className="w-full flex gap-4 overflow-x-auto rounded-xl pt-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {setupItems.map((item) => (
-            <SetupCard key={item.title} title={item.title} description={item.description} />
+            <SetupCard key={item.title} title={item.title} description={item.description} color={item.color} />
           ))}
         </div>
       </div>
