@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Copy, Check, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { CODE_LINES, PLAIN_CODE } from "./data/quickstartCode";
 
 export default function DeveloperQuickstart() {
@@ -47,53 +48,54 @@ export default function DeveloperQuickstart() {
               </div>
               <span className="text-xs text-neutral-400 font-mono">quickstart.py</span>
             </div>
-            <button
+            <motion.button
               onClick={handleCopy}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", duration: 0.3, bounce: 0 }}
               className="flex items-center justify-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer rounded-md px-2 py-1.5 hover:bg-neutral-100"
             >
-              <span className="relative w-3 h-3">
-                <span style={{
-                  position: 'absolute', inset: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  opacity: copied ? 0 : 1,
-                  filter: copied ? 'blur(6px)' : 'blur(0px)',
-                  transform: copied ? 'scale(0.6)' : 'scale(1)',
-                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
-                }}>
-                  <Copy size={12} />
-                </span>
-                <span style={{
-                  position: 'absolute', inset: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  opacity: copied ? 1 : 0,
-                  filter: copied ? 'blur(0px)' : 'blur(6px)',
-                  transform: copied ? 'scale(1)' : 'scale(0.6)',
-                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
-                }}>
-                  <Check size={12} className="text-green-500" />
-                </span>
+              <span className="relative w-3 h-3 flex items-center justify-center">
+                <AnimatePresence initial={false} mode="popLayout">
+                  {!copied ? (
+                    <motion.span
+                      key="copy-icon"
+                      initial={{ scale: 0.25, opacity: 0, filter: "blur(4px)" }}
+                      animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                      exit={{ scale: 0.25, opacity: 0, filter: "blur(4px)" }}
+                      transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                      style={{ position: "absolute", display: "flex" }}
+                    >
+                      <Copy size={12} />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="check-icon"
+                      initial={{ scale: 0.25, opacity: 0, filter: "blur(4px)" }}
+                      animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                      exit={{ scale: 0.25, opacity: 0, filter: "blur(4px)" }}
+                      transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                      style={{ position: "absolute", display: "flex" }}
+                    >
+                      <Check size={12} />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </span>
-              <span style={{ position: 'relative', display: 'inline-flex', width: '42px', height: '1em', alignItems: 'center' }}>
-                <span style={{
-                  position: 'absolute', left: 0,
-                  opacity: copied ? 0 : 1,
-                  filter: copied ? 'blur(4px)' : 'blur(0px)',
-                  transform: copied ? 'scale(0.85)' : 'scale(1)',
-                  transformOrigin: 'left center',
-                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
-                  whiteSpace: 'nowrap',
-                }}>Copy</span>
-                <span style={{
-                  position: 'absolute', left: 0,
-                  opacity: copied ? 1 : 0,
-                  filter: copied ? 'blur(0px)' : 'blur(4px)',
-                  transform: copied ? 'scale(1)' : 'scale(0.85)',
-                  transformOrigin: 'left center',
-                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
-                  whiteSpace: 'nowrap',
-                }} className="text-green-500">Copied</span>
+              <span style={{ position: "relative", display: "inline-flex", width: "42px", height: "1em", alignItems: "center", overflow: "hidden" }}>
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.span
+                    key={copied ? "copied-text" : "copy-text"}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                    style={{ position: "absolute", left: 0, whiteSpace: "nowrap" }}
+                  >
+                    {copied ? "Copied" : "Copy"}
+                  </motion.span>
+                </AnimatePresence>
               </span>
-            </button>
+            </motion.button>
           </div>
 
           {/* Code body */}
