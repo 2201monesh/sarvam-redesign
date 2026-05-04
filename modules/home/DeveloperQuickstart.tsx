@@ -54,7 +54,7 @@ export default function DeveloperQuickstart() {
     <div className="w-full flex flex-col lg:flex-row gap-10 items-stretch">
 
       {/* Left — text pinned to bottom */}
-      <div className="w-full lg:w-[36%] flex flex-col justify-end gap-4 shrink-0">
+      <div className="w-full lg:w-[36%] flex flex-col justify-start gap-4 shrink-0">
         <div className="flex flex-col gap-3">
           <p className="text-3xl font-season-mix font-medium leading-snug">Developer Quickstart</p>
           <p className="text-sm text-neutral-500 leading-relaxed">
@@ -72,7 +72,7 @@ export default function DeveloperQuickstart() {
 
       {/* Right — light code editor */}
       <div className="w-full lg:flex-1 min-w-0">
-        <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-sm">
+        <div className="rounded-2xl overflow-hidden border border-neutral-200">
 
           {/* Editor top bar */}
           <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-50 border-b border-neutral-200">
