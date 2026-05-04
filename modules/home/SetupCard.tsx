@@ -16,7 +16,7 @@ export default function SetupCard({ title, description, color, href }: SetupCard
       className="w-80 shrink-0 group cursor-pointer"
     >
       <div
-        className="relative w-full h-36 rounded-xl flex items-end px-4 pb-3 overflow-hidden border border-neutral-100 transition-shadow duration-200 group-hover:shadow-md"
+        className="relative w-full h-36 rounded-xl flex items-end px-4 pb-3 overflow-hidden border border-neutral-100 transition-shadow duration-200"
         style={{
           background: `radial-gradient(ellipse at 62% 38%, rgba(255,255,255,0.28) 0%, transparent 55%), ${color}`,
         }}
