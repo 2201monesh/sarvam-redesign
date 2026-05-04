@@ -7,18 +7,14 @@ import ApiKeyBanner from "@/modules/home/ApiKeyBanner";
 import UsageSection from "@/modules/home/UsageSection";
 import SetupSection from "@/modules/home/SetupSection";
 import LatestBlogs from "@/modules/home/LatestBlogs";
+import DeveloperQuickstart from "@/modules/home/DeveloperQuickstart";
 
 export default function HomePage() {
   return (
     <div className="flex-1 w-full">
       <HomeHeader />
       <div className="px-6 py-6 flex flex-col gap-10 max-w-[1400px] mx-auto w-full">
-        <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
-          <VoicesList />
-          <ConversationCard />
-        </div>
-        <FeatureCTA />
-
+        <DeveloperQuickstart />
         <ApiKeyBanner />
         <UsageSection />
 
@@ -31,6 +27,11 @@ export default function HomePage() {
             <LatestBlogs />
           </div>
         </div> */}
+        <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
+          <VoicesList />
+          <ConversationCard />
+        </div>
+        <FeatureCTA />
 
         <SetupSection />
       </div>
