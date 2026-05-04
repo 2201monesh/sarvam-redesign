@@ -11,29 +11,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { apiUsageMockData } from "@/data/mock/apiUsage";
-
-const SERIES = [
-  { key: "tts",       label: "Text to Speech", color: "#8fa1f8" },
-  { key: "stt",       label: "Speech to Text", color: "#72a539" },
-  { key: "translate", label: "Translate",       color: "#e87541" },
-];
-
-function CustomTooltip({ active, payload, label }: any) {
-  if (!active || !payload?.length) return null;
-  const p = payload[0];
-  return (
-    <div className="rounded-lg border border-neutral-200 bg-white px-3 py-2.5 shadow-sm min-w-[160px]">
-      <p className="text-xs text-neutral-400 mb-2">{label}</p>
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full shrink-0" style={{ background: p.color }} />
-          <span className="text-xs text-neutral-500">{p.name}</span>
-        </div>
-        <span className="text-xs font-medium text-zinc-800">{p.value.toLocaleString()}</span>
-      </div>
-    </div>
-  );
-}
+import { SERIES } from "./data/usageConfig";
+import UsageChartTooltip from "./UsageChartTooltip";
 
 export default function UsageChart() {
   const [activeKey, setActiveKey] = useState(SERIES[0].key);
@@ -107,7 +86,7 @@ export default function UsageChart() {
             tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : `${v}`}
           />
 
-          <Tooltip content={<CustomTooltip />} cursor={{ stroke: "#e5e5e5", strokeWidth: 1 }} />
+          <Tooltip content={<UsageChartTooltip />} cursor={{ stroke: "#e5e5e5", strokeWidth: 1 }} />
 
           <Area
             key={active.key}

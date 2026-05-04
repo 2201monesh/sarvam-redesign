@@ -2,44 +2,7 @@
 
 import { useState } from "react";
 import { Copy, Check, ArrowRight } from "lucide-react";
-
-const CODE_LINES = [
-  { tokens: [{ text: "import ", color: "#7c3aed" }, { text: "requests", color: "#1e293b" }] },
-  { tokens: [] },
-  { tokens: [{ text: "API_KEY", color: "#2563eb" }, { text: " = ", color: "#0891b2" }, { text: '"your_api_key"', color: "#16a34a" }] },
-  { tokens: [{ text: "BASE_URL", color: "#2563eb" }, { text: " = ", color: "#0891b2" }, { text: '"https://api.sarvam.ai/v1"', color: "#16a34a" }] },
-  { tokens: [] },
-  { tokens: [{ text: "# Convert text to natural speech", color: "#94a3b8" }] },
-  { tokens: [{ text: "response", color: "#1e293b" }, { text: " = ", color: "#0891b2" }, { text: "requests", color: "#1e293b" }, { text: ".", color: "#0891b2" }, { text: "post", color: "#2563eb" }, { text: "(", color: "#1e293b" }] },
-  { tokens: [{ text: "    f", color: "#1e293b" }, { text: '"{BASE_URL}/text-to-speech"', color: "#16a34a" }, { text: ",", color: "#1e293b" }] },
-  { tokens: [{ text: "    headers", color: "#1e293b" }, { text: "={", color: "#0891b2" }, { text: '"API-Subscription-Key"', color: "#16a34a" }, { text: ": ", color: "#1e293b" }, { text: "API_KEY", color: "#2563eb" }, { text: "},", color: "#1e293b" }] },
-  { tokens: [{ text: "    json", color: "#1e293b" }, { text: "={", color: "#0891b2" }] },
-  { tokens: [{ text: '        "inputs"', color: "#16a34a" }, { text: ": [{", color: "#1e293b" }, { text: '"text"', color: "#16a34a" }, { text: ": ", color: "#1e293b" }, { text: '"नमस्ते, मैं सर्वम AI हूँ"', color: "#16a34a" }, { text: "}],", color: "#1e293b" }] },
-  { tokens: [{ text: '        "target_language_code"', color: "#16a34a" }, { text: ": ", color: "#1e293b" }, { text: '"hi-IN"', color: "#16a34a" }, { text: ",", color: "#1e293b" }] },
-  { tokens: [{ text: '        "speaker"', color: "#16a34a" }, { text: ": ", color: "#1e293b" }, { text: '"anushka"', color: "#16a34a" }] },
-  { tokens: [{ text: "    }", color: "#1e293b" }] },
-  { tokens: [{ text: ")", color: "#1e293b" }] },
-  { tokens: [] },
-  { tokens: [{ text: "print", color: "#2563eb" }, { text: "(", color: "#1e293b" }, { text: "response", color: "#1e293b" }, { text: ".", color: "#0891b2" }, { text: "json", color: "#2563eb" }, { text: "())", color: "#1e293b" }] },
-];
-
-const PLAIN_CODE = `import requests
-
-API_KEY = "your_api_key"
-BASE_URL = "https://api.sarvam.ai/v1"
-
-# Convert text to natural speech
-response = requests.post(
-    f"{BASE_URL}/text-to-speech",
-    headers={"API-Subscription-Key": API_KEY},
-    json={
-        "inputs": [{"text": "नमस्ते, मैं सर्वम AI हूँ"}],
-        "target_language_code": "hi-IN",
-        "speaker": "anushka"
-    }
-)
-
-print(response.json())`;
+import { CODE_LINES, PLAIN_CODE } from "./data/quickstartCode";
 
 export default function DeveloperQuickstart() {
   const [copied, setCopied] = useState(false);
@@ -62,7 +25,7 @@ export default function DeveloperQuickstart() {
           </p>
         </div>
         <button
-          className="relative overflow-hidden bg-black text-white rounded-full px-5 text-sm py-2.5 font-season-mix cursor-pointer focus:outline-none outline-none w-fit flex items-center gap-2"
+          className="relative isolate overflow-hidden bg-black text-white rounded-full px-5 text-sm py-2.5 font-season-mix cursor-pointer focus:outline-none outline-none w-fit flex items-center gap-2"
           style={{ boxShadow: "inset 0 0 12px rgba(255,255,255,0.55), inset 0 0 30px rgba(255,255,255,0.25)" }}
         >
           <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 55%)" }} />
@@ -86,7 +49,7 @@ export default function DeveloperQuickstart() {
             </div>
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
+              className="flex items-center justify-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer rounded-md px-2 py-1.5 hover:bg-neutral-100"
             >
               <span className="relative w-3 h-3">
                 <span style={{
