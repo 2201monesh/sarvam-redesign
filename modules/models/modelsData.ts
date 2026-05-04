@@ -11,6 +11,7 @@ export interface ModelData {
   languages: string[];
   tags: string[];
   endpoint: string;
+  image: string;
 }
 
 export const MODELS: ModelData[] = [
@@ -25,6 +26,7 @@ export const MODELS: ModelData[] = [
     languages: ["Hindi", "Tamil", "Telugu", "Kannada", "Malayalam", "Bengali"],
     tags: ["ASR", "Real-time", "Streaming"],
     endpoint: "/v1/speech/recognize",
+    image: "/model-01.svg",
   },
   {
     id: "bulbul",
@@ -37,6 +39,7 @@ export const MODELS: ModelData[] = [
     languages: ["Hindi", "Tamil", "Telugu", "Kannada", "Malayalam"],
     tags: ["TTS", "Neural", "Streaming"],
     endpoint: "/v1/speech/synthesize",
+    image: "/model-03.svg",
   },
   {
     id: "mayura",
@@ -49,6 +52,7 @@ export const MODELS: ModelData[] = [
     languages: ["Hindi", "Tamil", "Telugu", "Marathi", "Gujarati", "English"],
     tags: ["NMT", "Indic", "Batch"],
     endpoint: "/v1/text/translate",
+    image: "/model-05.svg",
   },
   {
     id: "sarvam2b",
@@ -61,6 +65,7 @@ export const MODELS: ModelData[] = [
     languages: ["Hindi", "English", "Tamil", "Telugu", "+8 more"],
     tags: ["LLM", "Chat", "Completion"],
     endpoint: "/v1/chat/completions",
+    image: "/model-06.svg",
   },
   {
     id: "transliterate",
@@ -73,5 +78,6 @@ export const MODELS: ModelData[] = [
     languages: ["Devanagari", "Tamil", "Telugu", "Kannada", "Malayalam", "Roman"],
     tags: ["NLP", "Indic Scripts", "Fast"],
     endpoint: "/v1/text/transliterate",
+    image: "/model-07.svg",
   },
 ];

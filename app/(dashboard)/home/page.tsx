@@ -23,10 +23,10 @@ export default function HomePage() {
         <UsageSection />
 
         <div className="w-full flex items-stretch gap-8">
-          <div className="flex-[4] min-w-0">
+          <div className="flex-4 min-w-0">
             <FeaturesGrid />
           </div>
-          <div className="flex-[2] min-w-0 flex flex-col">
+          <div className="flex-2 min-w-0 flex flex-col">
             <LatestBlogs />
           </div>
         </div>

@@ -55,3 +55,8 @@ body {
   55%, 95% { opacity: 0.15; }
   100%     { opacity: 0.9; }
 }
+
+@keyframes modelFloat {
+  0%, 100% { transform: translateY(0px) rotate(-0.6deg); }
+  50%      { transform: translateY(-9px) rotate(0.6deg); }
+}

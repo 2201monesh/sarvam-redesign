@@ -1,97 +1,37 @@
-import { ArrowRight } from "lucide-react";
-import type { ModelData } from "@/modules/models/modelsData";
+import React from 'react'
+import Image from 'next/image'
+import { ModelData } from './modelsData'
+import GlowButton from '@/components/GlowButton'
 
-// 🖼️ Image list (ordered)
-const IMAGES = [
-  "https://images.unsplash.com/photo-1503455637927-730bce8583c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1507608158173-1dcec673a2e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1669392157886-f4e298c8ec6b?q=80&w=1122&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1675874973165-2c875c9ed382?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDY1fHx8ZW58MHx8fHx8",
-  "https://plus.unsplash.com/premium_photo-1670271544820-462bffe5930d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2Mnx8fGVufDB8fHx8fA%3D%3D",
-];
-
-// 🔑 Stable mapping based on name
-function getImage(name: string) {
-  const index =
-    name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) %
-    IMAGES.length;
-
-  return IMAGES[index];
-}
-
-export default function ModelCard({ model }: { model: ModelData }) {
-  const image = getImage(model.name);
-
+const ModelCard = ({ model, index = 0 }: { model: ModelData; index?: number }) => {
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white overflow-hidden flex flex-col">
-      
-      {/* Top section with image */}
-      <div className="relative h-44 w-full overflow-hidden">
-        <img
-          src={image}
-          alt="card visual"
-          className="w-full h-full object-cover"
-        />
-
-        {/* subtle overlay for readability */}
-        <div className="absolute inset-0 bg-black/5" />
+    <div className='w-96 h-[420px] border rounded-[55px] border-neutral-200 shadow-sm flex flex-col items-center justify-center px-6 gap-6'>
+      <div className='flex items-center justify-center'>
+        <Image src={model.image} alt={model.name} width={100} height={80} className='object-contain' style={{ animation: `modelFloat 3s ease-in-out infinite`, animationDelay: `${index * 0.6}s` }} />
       </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-5 gap-3">
-        <div className="flex items-start justify-between gap-2">
-          <div>
-            <h3 className="text-base font-medium text-zinc-900 font-season-mix leading-tight">
-              {model.name}
-              {model.version && (
-                <span className="text-neutral-400 font-matter font-normal text-sm ml-1">
-                  {model.version}
-                </span>
-              )}
-            </h3>
-            <p className="text-xs text-neutral-400 mt-0.5">
-              {model.type}
-            </p>
-          </div>
-
-          <div className="flex gap-1.5 flex-wrap justify-end">
-            {model.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-500 border border-neutral-200 font-medium whitespace-nowrap"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <p className="text-xs text-neutral-500 leading-relaxed">
-          {model.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1.5">
-          {model.languages.map((lang) => (
+      <div className='flex items-center flex-col gap-2 text-center mt-4'>
+        <p className='text-2xl font-season-mix'>{model.name}{model.version ? ` ${model.version}` : ''}</p>
+        <p className='text-sm text-neutral-500 leading-relaxed max-w-52'>{model.description}</p>
+        <div className='flex items-center gap-2 mt-2'>
+          {/* <GlowButton label='Try It' /> */}
+          <button
+            className="relative overflow-hidden bg-black text-white rounded-full px-5 text-sm py-3 font-season-mix cursor-pointer focus:outline-none outline-none border-none whitespace-nowrap"
+            style={{
+              boxShadow:
+                "inset 0 0 0 1.5px rgba(255,255,255,0.75), inset 0 0 12px rgba(255,255,255,0.55), inset 0 0 30px rgba(255,255,255,0.25)",
+            }}
+          >
             <span
-              key={lang}
-              className="text-[11px] px-2 py-0.5 rounded-full border border-neutral-200 text-neutral-500"
-            >
-              {lang}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-2 border-t border-neutral-100 flex items-center justify-between">
-          <span className="font-mono text-[11px] text-neutral-400">
-            {model.endpoint}
-          </span>
-
-          <button className="flex items-center gap-1.5 text-xs font-medium text-zinc-700 hover:text-zinc-900 transition-colors cursor-pointer">
-            Explore API
-            <ArrowRight size={13} />
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 55%)" }}
+            />
+            <span className="relative z-10">Try It</span>
           </button>
+          <button className='rounded-full border border-neutral-200 px-5 py-2.5 text-sm text-neutral-600 hover:bg-neutral-50 transition-colors duration-150 cursor-pointer'>Learn more</button>
         </div>
       </div>
     </div>
-  );
+  )
 }
+
+export default ModelCard

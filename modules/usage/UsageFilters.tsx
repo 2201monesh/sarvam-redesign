@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Check, X } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import {
   FilterOption, PERIOD_OPTIONS, MODEL_OPTIONS,
   API_KEY_OPTIONS, STATUS_OPTIONS, ENV_OPTIONS,
@@ -12,14 +12,14 @@ function FilterSelect({ label, options, value, onChange }: {
   label: string; options: FilterOption[]; value: string; onChange: (v: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
+  const [pos, setPos] = useState({ top: 0, right: 0, width: 0 });
   const btnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   function handleOpen() {
     if (btnRef.current) {
       const r = btnRef.current.getBoundingClientRect();
-      setPos({ top: r.bottom + 4, left: r.left, width: Math.max(r.width, 160) });
+      setPos({ top: r.bottom + 4, right: window.innerWidth - r.right, width: Math.max(r.width, 160) });
     }
     setOpen((o) => !o);
   }
@@ -60,7 +60,7 @@ function FilterSelect({ label, options, value, onChange }: {
       {open && (
         <div
           ref={menuRef}
-          style={{ position: "fixed", top: pos.top, left: pos.left, minWidth: pos.width }}
+          style={{ position: "fixed", top: pos.top, right: pos.right, minWidth: pos.width }}
           className="z-50 rounded-xl border border-neutral-200 bg-white shadow-lg shadow-black/5 py-1 overflow-hidden"
         >
           {value && (
@@ -139,10 +139,9 @@ export default function UsageFilters({ filters, onChange, onClear }: UsageFilter
           <button
             type="button"
             onClick={onClear}
-            className="flex items-center gap-1 rounded-lg border border-neutral-200 px-2.5 py-1.5 text-xs text-neutral-500 hover:text-zinc-700 hover:border-neutral-300 bg-white transition-colors cursor-pointer"
+            className="rounded-lg px-2.5 py-1.5 text-xs text-neutral-400 hover:text-zinc-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
-            <X size={11} />
-            {activeCount > 1 ? `Clear (${activeCount})` : "Clear"}
+            {activeCount > 1 ? `Clear all (${activeCount})` : "Clear"}
           </button>
         )}
       </div>

@@ -147,6 +147,8 @@ function CreateKeyModal({ open, onClose, onCreate }: {
     const value = generateApiKey();
     setNewKey(value);
     setStep("created");
+    setCopied(true);
+    navigator.clipboard.writeText(value);
     onCreate({ id: `key_${Date.now()}`, name: name.trim(), value, createdAt: new Date(), status: "active" });
   }
 
