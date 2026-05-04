@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { apiUsageMockData } from "@/data/mock/apiUsage";
-import { SERIES } from "./data/usageConfig";
+import { SERIES } from "../data/usageConfig";
 import UsageChartTooltip from "./usage-chart-tooltip";
 
 export default function UsageChart() {

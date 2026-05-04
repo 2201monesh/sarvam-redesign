@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { CONVERSATION_SPEAKERS } from "./data/conversationSpeakers";
-import { useConversationPlayer, PlayState } from "./hooks/useConversationPlayer";
-import ConversationControls from "./components/conversation-controls";
+import { CONVERSATION_SPEAKERS } from "../data/conversationSpeakers";
+import { useConversationPlayer, PlayState } from "../hooks/useConversationPlayer";
+import ConversationControls from "./conversation-controls";
 
 interface Props {
   audios: string[];

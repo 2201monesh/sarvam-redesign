@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Copy, Check, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { CODE_LINES, PLAIN_CODE } from "./data/quickstartCode";
+import { CODE_LINES, PLAIN_CODE } from "../data/quickstartCode";
 
 export default function DeveloperQuickstart() {
   const [copied, setCopied] = useState(false);
