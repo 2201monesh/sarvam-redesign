@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import {
   AreaChart,
   Area,
@@ -38,18 +38,41 @@ function CustomTooltip({ active, payload, label }: any) {
 export default function UsageChart() {
   const [activeKey, setActiveKey] = useState(SERIES[0].key);
   const active = SERIES.find((s) => s.key === activeKey)!;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [pill, setPill] = useState<{ left: number; width: number } | null>(null);
+
+  useLayoutEffect(() => {
+    const idx = SERIES.findIndex((s) => s.key === activeKey);
+    const btn = btnRefs.current[idx];
+    const container = containerRef.current;
+    if (!btn || !container) return;
+    const bRect = btn.getBoundingClientRect();
+    const cRect = container.getBoundingClientRect();
+    setPill({ left: bRect.left - cRect.left, width: bRect.width });
+  }, [activeKey]);
 
   return (
     <div>
-      <div className="flex items-center justify-end gap-1 pb-3 px-1">
-        {SERIES.map((s) => (
+      <div ref={containerRef} className="relative flex items-center justify-end gap-1 pb-3 px-1">
+        {pill && (
+          <span
+            className="absolute top-0 rounded-full bg-neutral-900"
+            style={{
+              left: pill.left,
+              width: pill.width,
+              height: "calc(100% - 12px)",
+              transition: "left 220ms ease-in-out, width 220ms ease-in-out",
+            }}
+          />
+        )}
+        {SERIES.map((s, i) => (
           <button
             key={s.key}
+            ref={(el) => { btnRefs.current[i] = el; }}
             onClick={() => setActiveKey(s.key)}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs transition-colors duration-150 cursor-pointer ${
-              activeKey === s.key
-                ? "bg-neutral-900 text-white"
-                : "text-neutral-500 hover:bg-neutral-100"
+            className={`relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs cursor-pointer transition-colors duration-150 ${
+              activeKey === s.key ? "text-white" : "text-neutral-500 hover:text-neutral-700"
             }`}
           >
             <span className="w-2 h-2 rounded-full shrink-0" style={{ background: s.color }} />

@@ -210,9 +210,30 @@ function CreateKeyModal({ open, onClose, onCreate }: {
               </div>
               <button
                 onClick={handleCopy}
-                className="shrink-0 flex items-center justify-center w-10 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
+                className="shrink-0 flex items-center justify-center w-10 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer overflow-hidden"
               >
-                {copied ? <Check size={15} className="text-green-500" /> : <Copy size={15} />}
+                <span className="relative w-4 h-4">
+                  <span style={{
+                    position: 'absolute', inset: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    opacity: copied ? 0 : 1,
+                    filter: copied ? 'blur(6px)' : 'blur(0px)',
+                    transform: copied ? 'scale(0.6)' : 'scale(1)',
+                    transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                  }}>
+                    <Copy size={15} />
+                  </span>
+                  <span style={{
+                    position: 'absolute', inset: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    opacity: copied ? 1 : 0,
+                    filter: copied ? 'blur(0px)' : 'blur(6px)',
+                    transform: copied ? 'scale(1)' : 'scale(0.6)',
+                    transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                  }}>
+                    <Check size={15} className="text-green-500" />
+                  </span>
+                </span>
               </button>
             </div>
           </div>
@@ -287,9 +308,30 @@ function UrlRow({ url }: { url: string }) {
         </div>
         <button
           onClick={handleCopy}
-          className="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
+          className="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer overflow-hidden"
         >
-          {copied ? <Check size={15} className="text-green-500" /> : <Copy size={15} />}
+          <span className="relative w-4 h-4">
+            <span style={{
+              position: 'absolute', inset: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              opacity: copied ? 0 : 1,
+              filter: copied ? 'blur(6px)' : 'blur(0px)',
+              transform: copied ? 'scale(0.6)' : 'scale(1)',
+              transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+            }}>
+              <Copy size={15} />
+            </span>
+            <span style={{
+              position: 'absolute', inset: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              opacity: copied ? 1 : 0,
+              filter: copied ? 'blur(0px)' : 'blur(6px)',
+              transform: copied ? 'scale(1)' : 'scale(0.6)',
+              transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+            }}>
+              <Check size={15} className="text-green-500" />
+            </span>
+          </span>
         </button>
       </div>
     </div>

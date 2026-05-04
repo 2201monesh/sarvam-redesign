@@ -88,10 +88,48 @@ export default function DeveloperQuickstart() {
               onClick={handleCopy}
               className="flex items-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
             >
-              {copied
-                ? <><Check size={12} className="text-green-500" /><span className="text-green-500">Copied</span></>
-                : <><Copy size={12} /><span>Copy</span></>
-              }
+              <span className="relative w-3 h-3">
+                <span style={{
+                  position: 'absolute', inset: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  opacity: copied ? 0 : 1,
+                  filter: copied ? 'blur(6px)' : 'blur(0px)',
+                  transform: copied ? 'scale(0.6)' : 'scale(1)',
+                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                }}>
+                  <Copy size={12} />
+                </span>
+                <span style={{
+                  position: 'absolute', inset: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  opacity: copied ? 1 : 0,
+                  filter: copied ? 'blur(0px)' : 'blur(6px)',
+                  transform: copied ? 'scale(1)' : 'scale(0.6)',
+                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                }}>
+                  <Check size={12} className="text-green-500" />
+                </span>
+              </span>
+              <span style={{ position: 'relative', display: 'inline-flex', width: '42px', height: '1em', alignItems: 'center' }}>
+                <span style={{
+                  position: 'absolute', left: 0,
+                  opacity: copied ? 0 : 1,
+                  filter: copied ? 'blur(4px)' : 'blur(0px)',
+                  transform: copied ? 'scale(0.85)' : 'scale(1)',
+                  transformOrigin: 'left center',
+                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                  whiteSpace: 'nowrap',
+                }}>Copy</span>
+                <span style={{
+                  position: 'absolute', left: 0,
+                  opacity: copied ? 1 : 0,
+                  filter: copied ? 'blur(0px)' : 'blur(4px)',
+                  transform: copied ? 'scale(1)' : 'scale(0.85)',
+                  transformOrigin: 'left center',
+                  transition: 'opacity 220ms ease, filter 220ms ease, transform 220ms ease',
+                  whiteSpace: 'nowrap',
+                }} className="text-green-500">Copied</span>
+              </span>
             </button>
           </div>
 
