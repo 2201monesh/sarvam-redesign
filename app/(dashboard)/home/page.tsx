@@ -12,8 +12,8 @@ export default function HomePage() {
   return (
     <div className="flex-1 w-full">
       <HomeHeader />
-      <div className="px-6 py-6 flex flex-col gap-10">
-        <div className="w-full flex items-stretch">
+      <div className="px-6 py-6 flex flex-col gap-10 max-w-[1400px] mx-auto w-full">
+        <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
           <VoicesList />
           <ConversationCard />
         </div>

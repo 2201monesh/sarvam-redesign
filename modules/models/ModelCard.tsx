@@ -5,7 +5,7 @@ import GlowButton from '@/components/GlowButton'
 
 const ModelCard = ({ model, index = 0 }: { model: ModelData; index?: number }) => {
   return (
-    <div className='w-96 h-[420px] border rounded-[55px] border-neutral-200 shadow-sm flex flex-col items-center justify-center px-6 gap-6'>
+    <div className='w-90 h-[420px] border rounded-[55px] border-neutral-200 shadow-sm flex flex-col items-center justify-center px-6 gap-6'>
       <div className='flex items-center justify-center'>
         <Image src={model.image} alt={model.name} width={100} height={80} className='object-contain' style={{ animation: `modelFloat 3s ease-in-out infinite`, animationDelay: `${index * 0.6}s` }} />
       </div>

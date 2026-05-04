@@ -16,7 +16,7 @@ export default function VoicesList() {
   const colors = randomColors();
 
   return (
-    <div className="w-[50%] flex flex-col gap-3.5 justify-center">
+    <div className="w-full lg:w-1/2 flex flex-col gap-3.5 justify-center">
       {voices.map((v, i) => (
         <VoicesTabs key={v.category} title={v.title} category={v.category} color={colors[i]} />
       ))}

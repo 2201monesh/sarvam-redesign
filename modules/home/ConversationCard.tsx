@@ -10,7 +10,7 @@ const descriptions = [
 
 export default function ConversationCard() {
   return (
-    <div className="w-[50%] flex items-center justify-center pl-6">
+    <div className="w-full lg:w-1/2 flex items-center justify-center lg:pl-6">
       <div className="w-full h-64 border border-neutral-200 rounded-2xl flex">
 
         {/* Left — play button + label */}

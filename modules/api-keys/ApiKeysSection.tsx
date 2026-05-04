@@ -204,13 +204,13 @@ function CreateKeyModal({ open, onClose, onCreate }: {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-medium text-zinc-700">Your new API key</label>
-            <div className="flex items-center gap-2">
+            <div className="flex items-stretch gap-2">
               <div className="flex-1 rounded-lg border border-neutral-200 bg-neutral-50 px-3.5 py-2.5 min-w-0">
                 <span className="font-mono text-xs text-zinc-600 break-all">{newKey}</span>
               </div>
               <button
                 onClick={handleCopy}
-                className="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
+                className="shrink-0 flex items-center justify-center w-10 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer"
               >
                 {copied ? <Check size={15} className="text-green-500" /> : <Copy size={15} />}
               </button>
@@ -315,7 +315,7 @@ export default function ApiKeysSection() {
   }
 
   return (
-    <div className="px-6 py-8 flex flex-col gap-8 w-full">
+    <div className="px-6 py-8 flex flex-col gap-8 w-full max-w-[1400px] mx-auto">
 
       {/* Project URL */}
       <div className="flex flex-col gap-3">

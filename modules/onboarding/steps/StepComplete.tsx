@@ -5,7 +5,7 @@ import { StepProps } from "@/modules/onboarding/types";
 
 export default function StepComplete({ onNext }: StepProps) {
   useEffect(() => {
-    const t = setTimeout(onNext, 2000);
+    const t = setTimeout(onNext, 600);
     return () => clearTimeout(t);
   }, [onNext]);
 

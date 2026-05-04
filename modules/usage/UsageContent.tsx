@@ -38,10 +38,10 @@ export default function UsageContent() {
   const serviceStat = filteredRows.reduce((s, r) => s + r.requests, 0).toLocaleString();
 
   return (
-    <div className="px-6 py-6 flex flex-col gap-6">
+    <div className="px-6 py-6 flex flex-col gap-6 max-w-[1400px] mx-auto w-full">
       <UsageFilters filters={filters} onChange={handleChange} onClear={handleClear} />
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <UsageBarCard
           title="Requests by service"
           description="total across all services"
