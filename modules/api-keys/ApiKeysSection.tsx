@@ -199,7 +199,7 @@ function CreateKeyModal({ open, onClose, onCreate }: {
           <div className="flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3.5">
             <TriangleAlert size={14} className="text-amber-500 shrink-0 mt-0.5" />
             <p className="text-xs text-amber-700 leading-relaxed">
-              Copy this key now. For security reasons and keep it somewhere safe.
+              Copy this key now for security reasons and keep it somewhere safe.
             </p>
           </div>
           <div className="flex flex-col gap-1.5">
