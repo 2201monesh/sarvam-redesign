@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { ModelData } from './modelsData'
-import GlowButton from '@/components/GlowButton'
+import GlowButton from '@/components/glow-button'
 
 const ModelCard = ({ model, index = 0 }: { model: ModelData; index?: number }) => {
   return (

@@ -1,4 +1,4 @@
-import GlowButton from "@/components/GlowButton";
+import GlowButton from "@/components/glow-button";
 import { LANGUAGES } from "@/modules/onboarding/constants";
 import { StepProps } from "@/modules/onboarding/types";
 

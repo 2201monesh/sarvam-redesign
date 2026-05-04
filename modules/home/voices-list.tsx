@@ -1,4 +1,4 @@
-import VoicesTabs from "@/components/VoicesTabs";
+import VoicesTabs from "@/components/voices-tabs";
 
 const COLORS = ["#72a539", "#8fa1f8", "#ffbd50"];
 

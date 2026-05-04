@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
-import SetupCard from "@/modules/home/SetupCard";
+import SetupCard from "@/modules/home/setup-card";
 
 const setupItems = [
   {

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { ChevronRight } from "lucide-react";
-import FeatureCard from "@/modules/home/FeatureCard";
+import FeatureCard from "@/modules/home/feature-card";
 import { Volume2Icon, type Volume2IconHandle } from "@/components/ui/icons/volume-2";
 import { MicIcon, type MicIconHandle } from "@/components/ui/icons/mic";
 import { LanguagesIcon, type LanguagesIconHandle } from "@/components/ui/icons/languages";

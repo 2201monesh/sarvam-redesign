@@ -1,5 +1,5 @@
-import ModelsHeader from "@/modules/models/ModelsHeader";
-import ModelCard from "@/modules/models/ModelCard";
+import ModelsHeader from "@/modules/models/models-header";
+import ModelCard from "@/modules/models/model-card";
 import { MODELS } from "@/modules/models/modelsData";
 
 export default function ModelsPage() {

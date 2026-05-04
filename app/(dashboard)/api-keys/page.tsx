@@ -1,5 +1,5 @@
-import ApiKeysHeader from "@/modules/api-keys/ApiKeysHeader";
-import ApiKeysSection from "@/modules/api-keys/ApiKeysSection";
+import ApiKeysHeader from "@/modules/api-keys/api-keys-header";
+import ApiKeysSection from "@/modules/api-keys/api-keys-section";
 
 export default function ApiKeysPage() {
   return (

@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import type { ApiKey } from "./types";
 import { formatDate } from "./utils";
-import CopyCell from "./CopyCell";
-import RowActions from "./RowActions";
-import EmptyState from "./EmptyState";
-import CreateKeyModal from "./CreateKeyModal";
-import RenameKeyModal from "./RenameKeyModal";
-import UrlRow from "./UrlRow";
+import CopyCell from "./copy-cell";
+import RowActions from "./row-actions";
+import EmptyState from "./empty-state";
+import CreateKeyModal from "./create-key-modal";
+import RenameKeyModal from "./rename-key-modal";
+import UrlRow from "./url-row";
 
 export default function ApiKeysSection() {
   const [keys, setKeys] = useState<ApiKey[]>([]);

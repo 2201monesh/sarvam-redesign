@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { CONVERSATION_SPEAKERS } from "./data/conversationSpeakers";
-import { useConversationPlayer } from "./hooks/useConversationPlayer";
-import ConversationControls from "./components/ConversationControls";
+import { useConversationPlayer, PlayState } from "./hooks/useConversationPlayer";
+import ConversationControls from "./components/conversation-controls";
 
 interface Props {
   audios: string[];
@@ -43,7 +43,7 @@ export default function ConversationCard({ audios }: Props) {
               speaker={speaker}
               isActive={activeIndex === i}
               isDimmed={activeIndex !== -1 && activeIndex !== i}
-              isPlaying={playState === "playing"}
+              isPlaying={playState === PlayState.Playing}
             />
           ))}
         </div>

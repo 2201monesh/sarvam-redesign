@@ -1,5 +1,5 @@
-import GlowButton from "@/components/GlowButton";
-import Select from "@/components/Select";
+import GlowButton from "@/components/glow-button";
+import Select from "@/components/select";
 import { HEARD_FROM_OPTIONS, LANGUAGES } from "@/modules/onboarding/constants";
 import { StepProps } from "@/modules/onboarding/types";
 

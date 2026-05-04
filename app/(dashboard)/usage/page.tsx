@@ -1,5 +1,5 @@
-import UsageHeader from "@/modules/usage/UsageHeader";
-import UsageContent from "@/modules/usage/UsageContent";
+import UsageHeader from "@/modules/usage/usage-header";
+import UsageContent from "@/modules/usage/usage-content";
 
 export default function UsagePage() {
   return (

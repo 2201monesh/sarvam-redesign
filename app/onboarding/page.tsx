@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { isOnboardingComplete } from "@/modules/onboarding/hooks/useOnboardingStorage";
-import OnboardingFlow from "@/modules/onboarding/OnboardingFlow";
+import { isOnboardingComplete } from "@/modules/onboarding/helpers/useOnboardingStorage";
+import OnboardingFlow from "@/modules/onboarding/onboarding-flow";
 
 export default function OnboardingPage() {
   const router = useRouter();

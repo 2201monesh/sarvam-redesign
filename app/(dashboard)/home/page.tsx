@@ -1,12 +1,12 @@
-import HomeHeader from "@/modules/home/HomeHeader";
-import VoicesList from "@/modules/home/VoicesList";
-import ConversationCard from "@/modules/home/ConversationCard";
-import FeatureCTA from "@/modules/home/FeatureCTA";
-import FeaturesGrid from "@/modules/home/FeaturesGrid";
-import ApiKeyBanner from "@/modules/home/ApiKeyBanner";
-import UsageSection from "@/modules/home/UsageSection";
-import SetupSection from "@/modules/home/SetupSection";
-import DeveloperQuickstart from "@/modules/home/DeveloperQuickstart";
+import HomeHeader from "@/modules/home/home-header";
+import VoicesList from "@/modules/home/voices-list";
+import ConversationCard from "@/modules/home/conversation-card";
+import FeatureCTA from "@/modules/home/feature-cta";
+import FeaturesGrid from "@/modules/home/features-grid";
+import ApiKeyBanner from "@/modules/home/api-key-banner";
+import UsageSection from "@/modules/home/usage-section";
+import SetupSection from "@/modules/home/setup-section";
+import DeveloperQuickstart from "@/modules/home/developer-quickstart";
 import { textToSpeechServer } from "@/lib/sarvam/tts-server";
 import { CONVERSATION_SPEAKERS } from "@/modules/home/data/conversationSpeakers";
 

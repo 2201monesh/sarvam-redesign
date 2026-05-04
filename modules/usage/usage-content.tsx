@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import UsageFilters, { UsageFiltersState } from "@/modules/usage/UsageFilters";
-import UsageBarCard from "@/modules/usage/UsageBarCard";
-import UsageModelsTable from "@/modules/usage/UsageModelsTable";
+import UsageFilters, { UsageFiltersState } from "@/modules/usage/usage-filters";
+import UsageBarCard from "@/modules/usage/usage-bar-card";
+import UsageModelsTable from "@/modules/usage/usage-models-table";
 import { serviceData, dailyDataByPeriod, periodLabels, ALL_MODEL_ROWS } from "@/modules/usage/usageMockData";
 
 const DEFAULT_FILTERS: UsageFiltersState = {

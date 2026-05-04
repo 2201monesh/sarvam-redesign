@@ -2,10 +2,14 @@
 
 import { useState, useRef } from "react";
 
-export type PlayState = "idle" | "playing" | "paused";
+export enum PlayState {
+  Idle = "idle",
+  Playing = "playing",
+  Paused = "paused",
+}
 
 export function useConversationPlayer(audios: string[]) {
-  const [playState, setPlayState] = useState<PlayState>("idle");
+  const [playState, setPlayState] = useState<PlayState>(PlayState.Idle);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -13,7 +17,7 @@ export function useConversationPlayer(audios: string[]) {
 
   async function playFrom(startIndex: number) {
     shouldStop.current = false;
-    setPlayState("playing");
+    setPlayState(PlayState.Playing);
 
     for (let i = startIndex; i < audios.length; i++) {
       if (shouldStop.current) break;
@@ -31,19 +35,19 @@ export function useConversationPlayer(audios: string[]) {
     }
 
     if (!shouldStop.current) {
-      setPlayState("idle");
+      setPlayState(PlayState.Idle);
       setActiveIndex(-1);
     }
   }
 
   async function togglePlayPause() {
-    if (playState === "playing") {
+    if (playState === PlayState.Playing) {
       audioRef.current?.pause();
-      setPlayState("paused");
+      setPlayState(PlayState.Paused);
       return;
     }
-    if (playState === "paused") {
-      setPlayState("playing");
+    if (playState === PlayState.Paused) {
+      setPlayState(PlayState.Playing);
       await audioRef.current?.play();
       return;
     }
@@ -56,14 +60,14 @@ export function useConversationPlayer(audios: string[]) {
       audioRef.current.pause();
       audioRef.current = null;
     }
-    setPlayState("idle");
+    setPlayState(PlayState.Idle);
     setActiveIndex(-1);
   }
 
   return {
     playState,
     activeIndex,
-    isActive: playState === "playing" || playState === "paused",
+    isActive: playState === PlayState.Playing || playState === PlayState.Paused,
     hasAudio: audios.some((a) => a.length > 0),
     togglePlayPause,
     stop,

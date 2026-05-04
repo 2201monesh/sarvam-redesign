@@ -1,5 +1,5 @@
 import Sidebar from "@/modules/sidebar";
-import Toaster from "@/components/Toaster";
+import Toaster from "@/components/toaster";
 
 export default function DashboardLayout({
   children,

@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import { apiUsageMockData } from "@/data/mock/apiUsage";
 import { SERIES } from "./data/usageConfig";
-import UsageChartTooltip from "./UsageChartTooltip";
+import UsageChartTooltip from "./usage-chart-tooltip";
 
 export default function UsageChart() {
   const [activeKey, setActiveKey] = useState(SERIES[0].key);

@@ -2,7 +2,7 @@
 
 import { Play, Pause, Square } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import type { PlayState } from "../hooks/useConversationPlayer";
+import { PlayState } from "../hooks/useConversationPlayer";
 
 interface Props {
   playState: PlayState;
@@ -29,7 +29,7 @@ export default function ConversationControls({ playState, isActive, disabled, on
       >
         <span className="relative w-4 h-4 flex items-center justify-center">
           <AnimatePresence initial={false} mode="popLayout">
-            {playState === "playing" ? (
+            {playState === PlayState.Playing ? (
               <motion.span
                 key="pause"
                 initial={{ scale: 0.5, opacity: 0 }}

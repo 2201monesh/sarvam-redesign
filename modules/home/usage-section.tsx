@@ -1,4 +1,4 @@
-import UsageChart from "@/modules/home/UsageChart";
+import UsageChart from "@/modules/home/usage-chart";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 

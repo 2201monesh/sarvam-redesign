@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Modal from "@/components/Modal";
-import GlowButton from "@/components/GlowButton";
+import Modal from "@/components/modal";
+import GlowButton from "@/components/glow-button";
 
 interface Props {
   open: boolean;

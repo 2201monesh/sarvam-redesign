@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getUserName } from "@/modules/onboarding/hooks/useOnboardingStorage";
+import { getUserName } from "@/modules/onboarding/helpers/useOnboardingStorage";
 
 export default function HomeHeader() {
   const [name, setName] = useState("");

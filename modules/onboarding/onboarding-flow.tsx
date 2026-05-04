@@ -3,15 +3,15 @@
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { TOTAL_STEPS } from "@/modules/onboarding/constants";
-import { markOnboardingComplete, saveUserName } from "@/modules/onboarding/hooks/useOnboardingStorage";
+import { markOnboardingComplete, saveUserName } from "@/modules/onboarding/helpers/useOnboardingStorage";
 import { OnboardingState } from "@/modules/onboarding/types";
-import SplashScreen    from "@/modules/onboarding/SplashScreen";
-import StepWelcome     from "@/modules/onboarding/steps/StepWelcome";
-import StepPersonalize from "@/modules/onboarding/steps/StepPersonalize";
-import StepRole        from "@/modules/onboarding/steps/StepRole";
-import StepUseCase     from "@/modules/onboarding/steps/StepUseCase";
-import StepLanguage    from "@/modules/onboarding/steps/StepLanguage";
-import StepComplete    from "@/modules/onboarding/steps/StepComplete";
+import SplashScreen    from "@/modules/onboarding/splash-screen";
+import StepWelcome     from "@/modules/onboarding/steps/step-welcome";
+import StepPersonalize from "@/modules/onboarding/steps/step-personalize";
+import StepRole        from "@/modules/onboarding/steps/step-role";
+import StepUseCase     from "@/modules/onboarding/steps/step-use-case";
+import StepLanguage    from "@/modules/onboarding/steps/step-language";
+import StepComplete    from "@/modules/onboarding/steps/step-complete";
 
 const STEP_WELCOME     = 0;
 const STEP_PERSONALIZE = 1;

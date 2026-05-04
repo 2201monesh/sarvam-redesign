@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Copy, Check, TriangleAlert } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import Modal from "@/components/Modal";
-import GlowButton from "@/components/GlowButton";
+import Modal from "@/components/modal";
+import GlowButton from "@/components/glow-button";
 import { toast } from "@/lib/toast";
 import type { ApiKey } from "./types";
 import { generateApiKey } from "./utils";

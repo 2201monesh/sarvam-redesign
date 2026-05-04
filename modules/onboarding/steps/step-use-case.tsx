@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import GlowButton from "@/components/GlowButton";
+import GlowButton from "@/components/glow-button";
 import { USE_CASES } from "@/modules/onboarding/constants";
 import { StepProps } from "@/modules/onboarding/types";
 import { playSelectClick } from "@/lib/sounds";

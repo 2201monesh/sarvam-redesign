@@ -1,4 +1,4 @@
-import GlowButton from "@/components/GlowButton";
+import GlowButton from "@/components/glow-button";
 import { StepProps } from "@/modules/onboarding/types";
 import Image from "next/image";
 
