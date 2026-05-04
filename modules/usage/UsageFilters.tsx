@@ -141,7 +141,7 @@ export default function UsageFilters({ filters, onChange, onClear }: UsageFilter
             onClick={onClear}
             className="rounded-lg px-2.5 py-1.5 text-xs text-neutral-400 hover:text-zinc-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
-            {activeCount > 1 ? `Clear all (${activeCount})` : "Clear"}
+            {activeCount > 1 ? `Clear all` : "Clear"}
           </button>
         )}
       </div>

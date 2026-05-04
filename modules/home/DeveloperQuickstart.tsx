@@ -71,7 +71,7 @@ export default function DeveloperQuickstart() {
       </div>
 
       {/* Right — light code editor */}
-      <div className="w-full lg:flex-1 min-w-0">
+      <div className="w-full lg:w-[46%] lg:ml-auto min-w-0 shrink-0">
         <div className="rounded-2xl overflow-hidden border border-neutral-200">
 
           {/* Editor top bar */}

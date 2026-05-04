@@ -34,15 +34,6 @@ export default function FeaturesGrid() {
           onMouseLeave={() => ttsRef.current?.stopAnimation()}
         />
         <FeatureCard
-          title="Speech to Text"
-          modelName="Saaras"
-          description="Transcribe live or recorded audio with high accuracy across diverse accents and Indian languages."
-          imageUrl="/audio-bg-02.avif"
-          iconElement={<MicIcon ref={sttRef} size={24} />}
-          onMouseEnter={() => sttRef.current?.startAnimation()}
-          onMouseLeave={() => sttRef.current?.stopAnimation()}
-        />
-        <FeatureCard
           title="Translate"
           modelName="Mayura"
           description="Translate between English and 22 Indian languages with high fidelity, optimised for structured long text."
@@ -50,6 +41,15 @@ export default function FeaturesGrid() {
           iconElement={<LanguagesIcon ref={transRef} size={24} />}
           onMouseEnter={() => transRef.current?.startAnimation()}
           onMouseLeave={() => transRef.current?.stopAnimation()}
+        />
+        <FeatureCard
+          title="Speech to Text"
+          modelName="Saaras"
+          description="Transcribe live or recorded audio with high accuracy across diverse accents and Indian languages."
+          imageUrl="/audio-bg-02.avif"
+          iconElement={<MicIcon ref={sttRef} size={24} />}
+          onMouseEnter={() => sttRef.current?.startAnimation()}
+          onMouseLeave={() => sttRef.current?.stopAnimation()}
         />
         <FeatureCard
           title="Chat"
