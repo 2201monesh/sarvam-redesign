@@ -23,12 +23,12 @@ export default function FeaturesGrid() {
           <ChevronRight size={14} />
         </button>
       </div>
-      <div className="w-full pt-6 grid grid-cols-2 gap-5">
+      <div className="w-full pt-6 grid grid-cols-4 gap-5">
         <FeatureCard
           title="Text to Speech"
           modelName="Bulbul"
           description="Convert text into natural, expressive speech across 10+ Indian languages with customisable voice and tone."
-          imageUrl="https://images.unsplash.com/photo-1503455637927-730bce8583c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          imageUrl="/audio-bg-01.avif"
           iconElement={<Volume2Icon ref={ttsRef} size={24} />}
           onMouseEnter={() => ttsRef.current?.startAnimation()}
           onMouseLeave={() => ttsRef.current?.stopAnimation()}
@@ -37,7 +37,7 @@ export default function FeaturesGrid() {
           title="Speech to Text"
           modelName="Saaras"
           description="Transcribe live or recorded audio with high accuracy across diverse accents and Indian languages."
-          imageUrl="https://images.unsplash.com/photo-1507608158173-1dcec673a2e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          imageUrl="/audio-bg-02.avif"
           iconElement={<MicIcon ref={sttRef} size={24} />}
           onMouseEnter={() => sttRef.current?.startAnimation()}
           onMouseLeave={() => sttRef.current?.stopAnimation()}
@@ -46,7 +46,7 @@ export default function FeaturesGrid() {
           title="Translate"
           modelName="Mayura"
           description="Translate between English and 22 Indian languages with high fidelity, optimised for structured long text."
-          imageUrl="https://plus.unsplash.com/premium_photo-1669392157886-f4e298c8ec6b?q=80&w=1122&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          imageUrl="/audio-bg-03.avif"
           iconElement={<LanguagesIcon ref={transRef} size={24} />}
           onMouseEnter={() => transRef.current?.startAnimation()}
           onMouseLeave={() => transRef.current?.stopAnimation()}
@@ -55,7 +55,7 @@ export default function FeaturesGrid() {
           title="Chat"
           modelName="Sarvam-2B"
           description="Build multilingual conversational experiences with Sarvam's Indic-optimised chat and agent APIs."
-          imageUrl="https://plus.unsplash.com/premium_photo-1675874973165-2c875c9ed382?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDY1fHx8ZW58MHx8fHx8"
+          imageUrl="/audio-bg-04.avif"
           iconElement={<MessageSquareIcon ref={chatRef} size={24} />}
           onMouseEnter={() => chatRef.current?.startAnimation()}
           onMouseLeave={() => chatRef.current?.stopAnimation()}

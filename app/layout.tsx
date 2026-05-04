@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${matter.variable} ${seasonMix.variable} h-full antialiased`}>
+    <html lang="en" className={`${matter.variable} ${seasonMix.variable} h-full antialiased`} style={{ colorScheme: 'light' }}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-matter)]">
         {children}
       </body>

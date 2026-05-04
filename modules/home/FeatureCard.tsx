@@ -19,14 +19,14 @@ const FeatureCard = ({ title, modelName, description, iconElement, imageUrl, onM
       <div
         className="w-full h-32 rounded-xl flex items-center justify-center overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url(${imageUrl})`,
+          backgroundImage: `url(${imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <div className="relative flex items-center gap-4">
           <div className="text-white">{iconElement}</div>
-          <div className="w-px h-7 bg-white/30 shrink-0" />
+          <div className="w-px h-7 bg-white shrink-0" />
           <p className="text-base font-medium text-white tracking-wide">{title}</p>
         </div>
       </div>

@@ -22,14 +22,15 @@ export default function HomePage() {
         <ApiKeyBanner />
         <UsageSection />
 
-        <div className="w-full flex items-stretch gap-8">
+        <FeaturesGrid />
+        {/* <div className="w-full flex items-stretch gap-8">
           <div className="flex-4 min-w-0">
             <FeaturesGrid />
           </div>
           <div className="flex-2 min-w-0 flex flex-col">
             <LatestBlogs />
           </div>
-        </div>
+        </div> */}
 
         <SetupSection />
       </div>
