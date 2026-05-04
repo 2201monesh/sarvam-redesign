@@ -32,7 +32,7 @@ export default function Sidebar() {
   };
 
   const renderIcon = (option: SIDEBAR_OPTION, active: boolean) => {
-    const cls = active ? "text-zinc-900 dark:text-zinc-100" : "text-zinc-400 dark:text-zinc-500";
+    const cls = active ? "text-zinc-900" : "text-zinc-400";
     switch (option) {
       case SIDEBAR_OPTION.HOME:     return <HouseIcon    ref={homeRef}    size={16} className={cls} />;
       case SIDEBAR_OPTION.MODELS:   return <CpuIcon      ref={modelsRef}  size={16} className={cls} />;
@@ -49,25 +49,25 @@ export default function Sidebar() {
       collapsed ? "justify-center" : "gap-3.5"
     } ${
       isActive(href)
-        ? "bg-[#f0f0f0] font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-        : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200"
+        ? "bg-[#f0f0f0] font-medium text-zinc-900"
+        : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800"
     }`;
 
   return (
     <aside
-      className={`flex h-screen shrink-0 flex-col bg-zinc-50 transition-[width] duration-200 ease-in-out dark:border-zinc-800 dark:bg-zinc-950 ${
+      className={`flex h-screen shrink-0 flex-col bg-zinc-50 transition-[width] duration-200 ease-in-out ${
         collapsed ? "w-[56px]" : "w-60"
       }`}
     >
       {/* Logo + toggle */}
       <div className={`flex items-center py-5 ${collapsed ? "justify-center px-3" : "justify-between px-5"}`}>
         {!collapsed && (
-          <span className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">sarvam</span>
+          <span className="text-3xl font-medium tracking-tight text-zinc-900">sarvam</span>
         )}
         <button
           onClick={() => setCollapsed((c) => !c)}
           title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700"
         >
           <PanelLeft size={16} />
         </button>
@@ -90,12 +90,12 @@ export default function Sidebar() {
         <div className="mt-3">
           {collapsed ? (
             <div className="mb-1 flex justify-center px-3 py-1">
-              <div className="h-px w-6 bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-px w-6 bg-zinc-200" />
             </div>
           ) : (
             <button
               onClick={() => setDevOpen((o) => !o)}
-              className="mb-1 flex w-full items-center justify-between rounded-md px-3 py-1 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
+              className="mb-1 flex w-full items-center justify-between rounded-md px-3 py-1 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-600"
             >
               Developers
               <ChevronDown size={13} className={`transition-transform duration-200 ${devOpen ? "rotate-0" : "-rotate-90"}`} />
