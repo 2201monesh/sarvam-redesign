@@ -52,7 +52,7 @@ export default function DeveloperQuickstart() {
               onClick={handleCopy}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", duration: 0.3, bounce: 0 }}
-              className="flex items-center justify-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer rounded-md px-2 py-1.5 hover:bg-neutral-100"
+              className="flex items-center justify-center gap-1.5 text-xs text-neutral-400 hover:text-zinc-600 transition-colors cursor-pointer rounded-md px-2 py-1.5"
             >
               <span className="relative w-3 h-3 flex items-center justify-center">
                 <AnimatePresence initial={false} mode="popLayout">
