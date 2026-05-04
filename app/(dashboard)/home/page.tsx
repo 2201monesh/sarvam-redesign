@@ -6,10 +6,24 @@ import FeaturesGrid from "@/modules/home/FeaturesGrid";
 import ApiKeyBanner from "@/modules/home/ApiKeyBanner";
 import UsageSection from "@/modules/home/UsageSection";
 import SetupSection from "@/modules/home/SetupSection";
-import LatestBlogs from "@/modules/home/LatestBlogs";
 import DeveloperQuickstart from "@/modules/home/DeveloperQuickstart";
+import { textToSpeechServer } from "@/lib/sarvam/tts-server";
+import { CONVERSATION_SPEAKERS } from "@/modules/home/data/conversationSpeakers";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const audios = await Promise.all(
+    CONVERSATION_SPEAKERS.map((s) =>
+      textToSpeechServer({
+        text: s.text,
+        target_language_code: "en-IN",
+        speaker: s.voice,
+        model: "bulbul:v3",
+        speech_sample_rate: 8000,
+        pace: 1.0,
+      }).catch(() => "")
+    )
+  );
+
   return (
     <div className="flex-1 w-full">
       <HomeHeader />
@@ -19,17 +33,9 @@ export default function HomePage() {
         <UsageSection />
 
         <FeaturesGrid />
-        {/* <div className="w-full flex items-stretch gap-8">
-          <div className="flex-4 min-w-0">
-            <FeaturesGrid />
-          </div>
-          <div className="flex-2 min-w-0 flex flex-col">
-            <LatestBlogs />
-          </div>
-        </div> */}
         <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
           <VoicesList />
-          <ConversationCard />
+          <ConversationCard audios={audios} />
         </div>
         <FeatureCTA />
 
