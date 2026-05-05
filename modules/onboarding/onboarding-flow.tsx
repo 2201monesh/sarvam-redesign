@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { TOTAL_STEPS } from "@/modules/onboarding/constants";
@@ -72,81 +73,37 @@ export default function OnboardingFlow() {
       >
         {/* Left panel */}
         <div className="hidden lg:flex flex-col w-2/5 h-screen sticky top-0 bg-white p-4 relative">
-          <div className="relative flex-1 rounded-2xl overflow-hidden bg-[#faf9f7]">
+          <div className="relative flex-1 rounded-2xl overflow-hidden">
 
-            {/* Amber orb — bottom-left, breathing + drift */}
-            <motion.div
-              className="absolute rounded-full"
-              style={{
-                width: '80%', height: '60%',
-                bottom: '-18%', left: '-18%',
-                background: 'radial-gradient(circle, #f5c28a75 0%, transparent 70%)',
-                filter: 'blur(2px)',
-              }}
-              animate={{ scale: [1, 1.18, 0.96, 1], x: [0, 22, -8, 0], y: [0, -18, 10, 0] }}
-              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', repeatType: 'mirror' }}
+            {/* Background image */}
+            <Image
+              src="/gradient-5.jfif"
+              alt=""
+              fill
+              unoptimized
+              className="object-cover"
+              priority
             />
 
-            {/* Periwinkle orb — top-right, breathing + drift */}
-            <motion.div
-              className="absolute rounded-full"
-              style={{
-                width: '75%', height: '55%',
-                top: '-18%', right: '-18%',
-                background: 'radial-gradient(circle, #d1defd85 0%, transparent 70%)',
-                filter: 'blur(2px)',
-              }}
-              animate={{ scale: [1, 1.14, 0.97, 1], x: [0, -18, 6, 0], y: [0, 16, -8, 0] }}
-              transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.5, repeatType: 'mirror' }}
-            />
+            {/* White wash */}
+            <div className="absolute inset-0 bg-white/20" />
 
-            {/* Soft centre pulse */}
-            <motion.div
-              className="absolute rounded-full"
-              style={{
-                width: '45%', height: '35%',
-                top: '32%', left: '27%',
-                background: 'radial-gradient(circle, #f5c28a40 0%, transparent 70%)',
-              }}
-              animate={{ scale: [1, 1.22, 1], opacity: [0.45, 0.75, 0.45] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', repeatType: 'mirror' }}
-            />
-
-            {/* Floating dots */}
-            {([
-              { left: '27%', top: '54%', size: 7,  color: '#f5a347', delay: 0,   dur: 5   },
-              { left: '63%', top: '67%', size: 5,  color: '#a0b4f7', delay: 1.3, dur: 7   },
-              { left: '44%', top: '36%', size: 4,  color: '#f5c28a', delay: 2.2, dur: 6   },
-              { left: '71%', top: '44%', size: 6,  color: '#c5d5fd', delay: 0.7, dur: 8   },
-              { left: '17%', top: '30%', size: 3,  color: '#f5a347', delay: 1.9, dur: 5.5 },
-              { left: '55%', top: '22%', size: 4,  color: '#d1defd', delay: 3.0, dur: 6.5 },
-            ] as const).map((p, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{ width: p.size, height: p.size, left: p.left, top: p.top, backgroundColor: p.color }}
-                animate={{ y: [0, -20, 0], opacity: [0.35, 0.7, 0.35] }}
-                transition={{ duration: p.dur, repeat: Infinity, ease: 'easeInOut', delay: p.delay, repeatType: 'mirror' }}
-              />
-            ))}
-
-
-            {/* Sarvam wordmark — bottom left */}
-            <div className="absolute bottom-7 left-8 z-10 pointer-events-none select-none">
-              <span className="text-[2.8rem] font-season-mix font-medium opacity-90 tracking-tight leading-none">
-                sarvam
-              </span>
-            </div>
-
-            {/* Grain texture — top layer */}
+            {/* Grain texture */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                mixBlendMode: 'overlay',
-                opacity: 0.22,
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                mixBlendMode: 'soft-light',
+                opacity: 0.55,
               }}
             />
+
+            {/* Sarvam wordmark — bottom left */}
+            <div className="absolute bottom-7 left-8 z-10 pointer-events-none select-none">
+              <span className="text-[2.8rem] font-season-mix font-medium text-white opacity-90 tracking-tight leading-none">
+                sarvam
+              </span>
+            </div>
           </div>
 
 
