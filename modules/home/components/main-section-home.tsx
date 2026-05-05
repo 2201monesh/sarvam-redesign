@@ -26,10 +26,10 @@ const MainSectionHome = () => {
     <div>
       <div className="w-full flex items-center justify-between mb-4">
         <p className="font-season-mix capitalize font-medium text-2xl">Get Started</p>
-        <div className="flex items-center gap-1.5 cursor-pointer text-neutral-500 hover:text-neutral-800 transition-colors duration-150 select-none">
-          <RxCross2 size={16} />
-          <p className="text-sm">Dismiss</p>
-        </div>
+        <button className="flex items-center gap-1.5 cursor-pointer text-neutral-500 hover:text-neutral-800 transition-colors duration-150 select-none">
+          <RxCross2 size={13} className="shrink-0" />
+          <span className="text-sm leading-none">Dismiss</span>
+        </button>
       </div>
 
       <div className="w-full border rounded-xl border-neutral-200 flex flex-row justify-between items-stretch px-6 py-5 gap-6">
