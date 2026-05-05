@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { useState } from "react";
-import { PanelLeft, ChevronDown } from "lucide-react";
+import { PanelLeft, ChevronDown, Check, ArrowRight, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { SIDEBAR_OPTION_CONTENT, HOME_OPTION, DEV_OPTIONS } from "./constants";
 import { SIDEBAR_OPTION } from "./interfaces";
 import { HouseIcon, type HouseIconHandle } from "@/components/ui/icons/house";
@@ -14,10 +15,25 @@ import { KeyRoundIcon, type KeyRoundIconHandle } from "@/components/ui/icons/key
 
 type AnyHandle = { startAnimation: () => void; stopAnimation: () => void };
 
+const GETTING_STARTED_STEPS = [
+  { id: "api-key",  label: "Create API key",   href: "/api-keys" },
+  { id: "credits",  label: "Add credits",       href: "/home" },
+  { id: "prompt",   label: "Build a prompt",    href: "/home" },
+];
+
 export default function Sidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const [devOpen, setDevOpen] = useState(true);
+  const [done, setDone] = useState<Set<string>>(new Set());
+  const [cardDismissed, setCardDismissed] = useState(false);
+
+  const toggleDone = (id: string) =>
+    setDone((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
 
   const homeRef    = useRef<HouseIconHandle>(null);
   const modelsRef  = useRef<CpuIconHandle>(null);
@@ -122,6 +138,72 @@ export default function Sidebar() {
           </div>
         </div>
       </nav>
+
+      {/* Get started card */}
+      <AnimatePresence>
+      {!collapsed && !cardDismissed && done.size < GETTING_STARTED_STEPS.length && (
+        <motion.div
+          className="mx-2 mb-3 rounded-xl border border-zinc-100 bg-white p-3"
+          initial={{ opacity: 0, y: 10, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 6, scale: 0.97 }}
+          transition={{ duration: 0.22, ease: [0.25, 0, 0, 1] }}
+        >
+          <div className="mb-2.5 flex items-start justify-between">
+            <div>
+              <p className="text-[13px] font-medium text-zinc-800">Get started</p>
+              <p className="mt-0.5 text-[11px] text-zinc-400">{done.size} of {GETTING_STARTED_STEPS.length} done</p>
+            </div>
+            <button
+              onClick={() => setCardDismissed(true)}
+              className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full text-zinc-300 transition-colors hover:bg-zinc-100 hover:text-zinc-500 cursor-pointer"
+            >
+              <X size={11} />
+            </button>
+          </div>
+
+          {/* Progress bar */}
+          <div className="mb-3 h-1 w-full overflow-hidden rounded-full bg-zinc-100">
+            <div
+              className="h-full rounded-full bg-zinc-900 transition-all duration-500 ease-out"
+              style={{ width: `${(done.size / GETTING_STARTED_STEPS.length) * 100}%` }}
+            />
+          </div>
+
+          {/* Steps */}
+          <div className="flex flex-col gap-1">
+            {GETTING_STARTED_STEPS.map((step) => {
+              const checked = done.has(step.id);
+              return (
+                <div key={step.id} className="group flex items-center gap-2.5 rounded-lg px-1 py-1.5 transition-colors hover:bg-zinc-50">
+                  <button
+                    onClick={() => toggleDone(step.id)}
+                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-all duration-150 cursor-pointer ${
+                      checked
+                        ? "border-zinc-900 bg-zinc-900"
+                        : "border-zinc-200 hover:border-zinc-400"
+                    }`}
+                  >
+                    {checked && <Check size={8} strokeWidth={3} className="text-white" />}
+                  </button>
+                  <Link
+                    href={step.href}
+                    className={`flex-1 text-[12px] transition-colors ${
+                      checked ? "text-zinc-300 line-through" : "text-zinc-600 hover:text-zinc-900"
+                    }`}
+                  >
+                    {step.label}
+                  </Link>
+                  {!checked && (
+                    <ArrowRight size={11} className="text-zinc-200 transition-colors group-hover:text-zinc-400" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
+      </AnimatePresence>
     </aside>
   );
 }

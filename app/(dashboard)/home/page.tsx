@@ -31,7 +31,7 @@ export default async function HomePage() {
       <HomeHeader />
       <div className="px-6 py-6 flex flex-col gap-10 max-w-[1400px] mx-auto w-full">
         {/* <DeveloperQuickstart /> */}
-        <MainSectionHome />
+        {/* <MainSectionHome /> */}
         {/* <ApiKeyBanner /> */}
         <UsageSection />
 
