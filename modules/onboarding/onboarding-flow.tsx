@@ -67,44 +67,76 @@ export default function OnboardingFlow() {
       {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
 
       <div
-        className="min-h-screen flex flex-col items-center justify-center px-6 bg-white transition-opacity duration-500"
+        className="min-h-screen flex transition-opacity duration-500"
         style={{ opacity: showSplash ? 0 : 1 }}
       >
-        {/* Progress bar */}
-        {showProgress && (
-          <div className="fixed top-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
-            {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
-              <div
-                key={i}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  i < progressStep ? "w-8 bg-zinc-900" : "w-4 bg-neutral-200"
-                }`}
-              />
-            ))}
+        {/* Left panel — placeholder, fill with animation/illustration later */}
+        <div className="hidden lg:flex flex-col w-2/5 h-screen sticky top-0 bg-white p-4">
+          {/* Inner container with gradient */}
+          <div className="relative flex-1 rounded-2xl overflow-hidden">
+            {/* Warm white base */}
+            <div className="absolute inset-0 bg-[#faf9f7]" />
+            {/* Colour orbs */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: [
+                  'radial-gradient(ellipse at 18% 82%, #f5c28a60 0%, transparent 52%)',
+                  'radial-gradient(ellipse at 82% 18%, #d1defd70 0%, transparent 52%)',
+                  'radial-gradient(ellipse at 50% 50%, #f5c28a20 0%, transparent 58%)',
+                ].join(', '),
+              }}
+            />
+            {/* Grain texture */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                mixBlendMode: 'overlay',
+                opacity: 0.25,
+              }}
+            />
           </div>
-        )}
+        </div>
 
-        {/* Step content */}
-        <div className="w-full max-w-lg">
-          <AnimatePresence mode="wait" custom={direction} initial={false}>
-            <motion.div
-              key={step}
-              custom={direction}
-              variants={stepVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: 0.22, ease: [0.25, 0, 0, 1] }}
-              className="w-full"
-            >
-              {step === STEP_WELCOME     && <StepWelcome     {...stepProps} />}
-              {step === STEP_PERSONALIZE && <StepPersonalize {...stepProps} />}
-              {step === STEP_ROLE        && <StepRole        {...stepProps} />}
-              {step === STEP_USECASE     && <StepUseCase     {...stepProps} />}
-              {step === STEP_LANGUAGE    && <StepLanguage    {...stepProps} />}
-              {step === STEP_COMPLETE    && <StepComplete    {...stepProps} />}
-            </motion.div>
-          </AnimatePresence>
+        {/* Right panel — animated step content */}
+        <div className="flex-1 min-h-screen flex flex-col items-center justify-center px-8 relative bg-white">
+          {/* Progress bar */}
+          {showProgress && (
+            <div className="absolute top-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    i < progressStep ? "w-8 bg-zinc-900" : "w-4 bg-neutral-200"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Step content */}
+          <div className="w-full max-w-lg">
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <motion.div
+                key={step}
+                custom={direction}
+                variants={stepVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.22, ease: [0.25, 0, 0, 1] }}
+                className="w-full"
+              >
+                {step === STEP_WELCOME     && <StepWelcome     {...stepProps} />}
+                {step === STEP_PERSONALIZE && <StepPersonalize {...stepProps} />}
+                {step === STEP_ROLE        && <StepRole        {...stepProps} />}
+                {step === STEP_USECASE     && <StepUseCase     {...stepProps} />}
+                {step === STEP_LANGUAGE    && <StepLanguage    {...stepProps} />}
+                {step === STEP_COMPLETE    && <StepComplete    {...stepProps} />}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </>

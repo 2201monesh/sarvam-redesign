@@ -13,6 +13,7 @@ export default function StepWelcome({ onNext }: StepProps) {
             width={100}
             height={100}
             className="object-contain"
+            style={{ width: 100, height: 'auto' }}
           />
       </div>
       <h1 className="text-4xl font-medium font-season-mix mb-4">Welcome to Sarvam AI</h1>

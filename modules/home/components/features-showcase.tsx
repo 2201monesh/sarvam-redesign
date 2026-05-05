@@ -84,7 +84,7 @@ interface CardProps {
 function FeatureCompactCard({ feature, icon, iconRef }: CardProps) {
   return (
     <div
-      className="group flex flex-col gap-4 p-5 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 active:scale-[0.98] transition-[transform,background-color] duration-150"
+      className="group flex flex-col gap-4 p-5 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 active:scale-[0.98] transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
       onMouseEnter={() => (iconRef.current as AnyHandle)?.startAnimation()}
       onMouseLeave={() => (iconRef.current as AnyHandle)?.stopAnimation()}
     >
