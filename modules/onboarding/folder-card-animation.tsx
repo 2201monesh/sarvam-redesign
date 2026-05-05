@@ -1,0 +1,237 @@
+'use client'
+
+import Image from 'next/image'
+import React, { useState, useEffect } from 'react'
+
+type ClickPhase = null | 'flying' | 'center' | 'returning-flip' | 'returning-pre-right' | 'returning-right' | 'returning-back'
+
+const FolderCardAnimation = () => {
+  const [hovered, setHovered] = useState(false)
+  const [clickPhase, setClickPhase] = useState<ClickPhase>(null)
+  const [flyingElevated, setFlyingElevated] = useState(false)
+
+  const handleClick = () => {
+    if (clickPhase === 'center') { setClickPhase('returning-flip'); return }
+    if (clickPhase !== null) return
+    setClickPhase('flying')
+  }
+
+  useEffect(() => {
+    if (clickPhase !== 'flying') { setFlyingElevated(false); return }
+    const timer = setTimeout(() => setFlyingElevated(true), 385)
+    return () => clearTimeout(timer)
+  }, [clickPhase])
+
+  useEffect(() => {
+    if (clickPhase === 'returning-pre-right') {
+      let raf1: number, raf2: number
+      raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(() => setClickPhase('returning-right'))
+      })
+      return () => { cancelAnimationFrame(raf1); cancelAnimationFrame(raf2) }
+    }
+  }, [clickPhase])
+
+  useEffect(() => {
+    if (clickPhase === 'returning-right') {
+      const timer = setTimeout(() => setClickPhase('returning-back'), 700)
+      return () => clearTimeout(timer)
+    }
+  }, [clickPhase])
+
+  const handleAnimationEnd = () => {
+    if (clickPhase === 'flying') setClickPhase('center')
+    if (clickPhase === 'returning-flip') setClickPhase('returning-pre-right')
+  }
+
+  const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
+    if (e.propertyName !== 'transform') return
+    if (clickPhase === 'returning-back') setClickPhase(null)
+  }
+
+  const whiteCardStyle = (() => {
+    if (clickPhase === 'flying') {
+      return {
+        animation: 'cardFullFlyIn 1.2s forwards',
+        zIndex: flyingElevated ? 20 : 2,
+      }
+    }
+    if (clickPhase === 'center') {
+      return {
+        transform: 'translateX(0px) rotateZ(-5deg) perspective(700px) rotateY(180deg) scale(1.04)',
+        transition: 'transform 0.35s ease-out, box-shadow 0.4s ease-out',
+        boxShadow: '0 10px 32px rgba(0,0,0,0.15), -5px -5px 14px rgba(0,0,0,0.18)',
+        zIndex: 20,
+      }
+    }
+    if (clickPhase === 'returning-flip') {
+      return {
+        animation: 'cardFlipBack 0.55s ease-in-out forwards',
+        zIndex: 20,
+      }
+    }
+    if (clickPhase === 'returning-pre-right') {
+      return {
+        transform: 'translateX(0px) rotateZ(3deg) perspective(700px) rotateY(0deg)',
+        zIndex: 20,
+      }
+    }
+    if (clickPhase === 'returning-right') {
+      return {
+        transform: 'translateX(220px) rotateZ(3deg) perspective(700px) rotateY(0deg)',
+        transition: 'transform 0.65s cubic-bezier(0.23, 1, 0.32, 1)',
+        boxShadow: 'none',
+        zIndex: 20,
+      }
+    }
+    if (clickPhase === 'returning-back') {
+      return {
+        transform: 'translateX(0px) rotateZ(3deg) perspective(700px) rotateY(0deg)',
+        transition: 'transform 0.65s cubic-bezier(0.23, 1, 0.32, 1)',
+        boxShadow: 'none',
+        zIndex: 2,
+      }
+    }
+    return {
+      transform: hovered
+        ? 'translateX(38px) rotateZ(3deg) perspective(700px) rotateY(0deg)'
+        : 'translateX(0px) rotateZ(3deg) perspective(700px) rotateY(0deg)',
+      transition: 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.45s ease-out',
+      boxShadow: 'none',
+      zIndex: 2,
+    }
+  })()
+
+  const folderOpen =
+    (hovered && !clickPhase) ||
+    clickPhase === 'returning-right' ||
+    clickPhase === 'returning-back'
+
+  return (
+    <>
+      <style>{`
+        @keyframes cardFullFlyIn {
+          0% {
+            transform: translateX(0px) rotateZ(3deg) perspective(700px) rotateY(0deg) scale(1);
+            box-shadow: none;
+            animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+          }
+          32% {
+            transform: translateX(220px) rotateZ(3deg) perspective(700px) rotateY(0deg) scale(1.04);
+            box-shadow: 4px 6px 14px rgba(0,0,0,0.10);
+            animation-timing-function: cubic-bezier(0.55, 0, 0.45, 1);
+          }
+          66% {
+            transform: translateX(24px) rotateZ(-3deg) perspective(700px) rotateY(90deg) scale(1.06);
+            box-shadow: 10px 18px 38px rgba(0,0,0,0.22);
+            animation-timing-function: ease-out;
+          }
+          100% {
+            transform: translateX(0px) rotateZ(-5deg) perspective(700px) rotateY(180deg) scale(1.04);
+            box-shadow: 0 10px 32px rgba(0,0,0,0.15), -5px -5px 14px rgba(0,0,0,0.18);
+          }
+        }
+        @keyframes cardFlipBack {
+          0% {
+            transform: translateX(0px) rotateZ(-5deg) perspective(700px) rotateY(180deg) scale(1.04);
+            box-shadow: 0 10px 32px rgba(0,0,0,0.15), -5px -5px 14px rgba(0,0,0,0.18);
+          }
+          100% {
+            transform: translateX(0px) rotateZ(3deg) perspective(700px) rotateY(0deg) scale(1);
+            box-shadow: none;
+          }
+        }
+      `}</style>
+
+      <div
+        className="relative w-[272px] h-[360px] cursor-pointer"
+        style={{ isolation: 'isolate' }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={handleClick}
+      >
+        {/* Back card */}
+        <div className="absolute inset-0 m-auto w-[272px] h-[360px] rounded-xl bg-[#2c52a7]" />
+
+        {/* White card */}
+        <div
+          className="absolute inset-0 m-auto w-64 h-[312px] rounded-xl"
+          style={{ ...whiteCardStyle, transformStyle: 'preserve-3d' }}
+          onAnimationEnd={handleAnimationEnd}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {/* Front face */}
+          <div
+            className="absolute inset-0 rounded-xl bg-white overflow-hidden"
+            style={{ backfaceVisibility: 'hidden' }}
+          >
+            <p
+              className="absolute top-5 right-3 text-xs uppercase tracking-widest text-neutral-400"
+              style={{
+                writingMode: 'vertical-rl',
+                textAlign: 'start',
+                opacity: hovered || clickPhase !== null ? 1 : 0,
+                transition: 'opacity 0.3s ease',
+              }}
+            >
+              do not open
+            </p>
+          </div>
+
+          {/* Back face */}
+          <div
+            className="absolute inset-0 rounded-xl bg-white overflow-hidden flex flex-col"
+            style={{
+              backfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg)',
+              padding: '28px 24px',
+              gap: '16px',
+            }}
+          >
+            <p className="text-[11px] uppercase tracking-widest text-black font-semibold">Sarvam AI</p>
+            <p className="text-[9.5px] leading-relaxed text-black">
+              India's most powerful developer platform for Indic languages — speech, text, and
+              translation APIs built for production scale.
+            </p>
+            <p className="text-[9.5px] leading-relaxed text-black">
+              Integrate Bulbul, Saaras, Mayura and more into your apps with a single API key.
+              Trusted by teams building the next generation of Bharat-first products.
+            </p>
+            <Image
+              src="/sarvam-logo-removebg-preview.png"
+              alt="logo"
+              width={40}
+              height={40}
+              unoptimized
+              style={{
+                position: 'absolute',
+                bottom: 8,
+                right: 8,
+                width: 40,
+                height: 40,
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Front cover */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 5, perspective: '900px' }}>
+          <div
+            className="absolute inset-0 rounded-xl bg-[#2958c8] px-4 py-6 flex flex-col justify-end"
+            style={{
+              transformOrigin: 'left center',
+              transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)',
+              transform: folderOpen ? 'rotateY(-32deg)' : 'rotateY(0deg)',
+            }}
+          >
+            <p className="uppercase text-sm text-white">confidential files</p>
+            <p className="text-white text-xs">internal use only</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default FolderCardAnimation
