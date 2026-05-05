@@ -34,7 +34,7 @@ export default async function HomePage() {
         {/* <ApiKeyBanner /> */}
         <UsageSection />
 
-        <FeaturesGrid />
+        {/* <FeaturesGrid /> */}
         {/* <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
           <VoicesList />
           <ConversationCard audios={audios} />
