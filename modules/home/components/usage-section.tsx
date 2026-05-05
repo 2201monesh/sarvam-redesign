@@ -6,7 +6,7 @@ export default function UsageSection() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between pb-6">
-        <p className="font-season-mix capitalize font-medium text-xl mr-6">Usage</p>
+        <p className="font-season-mix capitalize font-medium text-2xl mr-6">Usage</p>
         <Link href="/api-keys" className="shrink-0">
           <button
             className="relative isolate overflow-hidden bg-black text-white rounded-full px-5 text-sm py-2.5 font-season-mix cursor-pointer focus:outline-none outline-none w-fit flex items-center gap-2"

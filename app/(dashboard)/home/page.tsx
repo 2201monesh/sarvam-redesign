@@ -3,6 +3,7 @@ import VoicesList from "@/modules/home/components/voices-list";
 import ConversationCard from "@/modules/home/components/conversation-card";
 import FeatureCTA from "@/modules/home/components/feature-cta";
 import FeaturesGrid from "@/modules/home/components/features-grid";
+import FeaturesShowcase from "@/modules/home/components/features-showcase";
 import ApiKeyBanner from "@/modules/home/components/api-key-banner";
 import UsageSection from "@/modules/home/components/usage-section";
 import SetupSection from "@/modules/home/components/setup-section";
@@ -35,6 +36,7 @@ export default async function HomePage() {
         <UsageSection />
 
         {/* <FeaturesGrid /> */}
+        <FeaturesShowcase />
         {/* <div className="w-full flex flex-col lg:flex-row items-stretch gap-6">
           <VoicesList />
           <ConversationCard audios={audios} />

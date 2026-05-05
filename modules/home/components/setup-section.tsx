@@ -60,8 +60,8 @@ export default function SetupSection() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between pb-6">
-        <p className="font-season-mix capitalize font-medium text-3xl mr-6">Learn how to setup?</p>
+      <div className="flex items-center justify-between pb-4">
+        <p className="font-season-mix capitalize font-medium text-2xl mr-6">Learn how to setup?</p>
         <a
           href="https://docs.sarvam.ai/"
           target="_blank"
